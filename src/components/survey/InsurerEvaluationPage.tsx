@@ -115,6 +115,28 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
     return entry ? entry[0] : '';
   };
 
+  // Helper function to determine the insurer with the highest proportion
+  const getHighestProportionInsurer = (): string => {
+    let highestInsurer = '';
+    let highestProportion = 0;
+
+    data.primaryInsurers.forEach((insurer) => {
+      const proportion = data.insurerRatings[insurer]?.proportion || 0;
+      if (proportion > highestProportion) {
+        highestProportion = proportion;
+        highestInsurer = insurer;
+      }
+    });
+
+    return highestInsurer;
+  };
+
+  // Automatically set the deepDiveInsurer based on highest proportion
+  const highestProportionInsurer = getHighestProportionInsurer();
+  if (highestProportionInsurer && data.deepDiveInsurer !== highestProportionInsurer) {
+    updateData({ deepDiveInsurer: highestProportionInsurer });
+  }
+
   // New Array of Ranks (1 to 6) for iteration
   const ranks = [1, 2, 3, 4, 5, 6];
 
@@ -290,56 +312,39 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            20. Select the insurer that you place the largest portion of your business with
+            20. Insurer with the largest portion of business
           </label>
-          <select
-            value={data.selectedInsurer}
-            onChange={(e) => updateData({ selectedInsurer: e.target.value })}
-            className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          >
-            <option value="">Select an insurer</option>
-            {insurers.map((insurer) => (
-              <option key={insurer} value={insurer}>
-                {insurer}
-              </option>
-            ))}
-            <option value="Other">Other</option>
-          </select>
-          {data.selectedInsurer === 'Other' && (
-            <input
-              type="text"
-              value={data.selectedInsurerOther}
-              onChange={(e) => updateData({ selectedInsurerOther: e.target.value })}
-              placeholder="Please specify"
-              className="mt-2 w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-            />
+          {highestProportionInsurer ? (
+            <div className="bg-blue-100 border border-blue-300 rounded-lg p-4">
+              <p className="text-sm text-gray-700">
+                Based on your answers in Question 19, the insurer receiving the largest portion of your business is:
+              </p>
+              <p className="text-lg font-semibold text-blue-900 mt-2">{highestProportionInsurer}</p>
+              <p className="text-xs text-gray-600 mt-2">
+                This insurer will be used for the Deep Dive Questions below.
+              </p>
+            </div>
+          ) : (
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <p className="text-sm text-yellow-800">
+                Please complete the ratings in Question 19 to determine which insurer receives the largest portion of your business.
+              </p>
+            </div>
           )}
         </div>
 
         <div className="bg-blue-50 p-6 rounded-lg space-y-6">
           <h3 className="text-lg font-semibold text-gray-900">Deep Dive Questions</h3>
 
-          <div>
-            <label className="block text-sm font-medium text-gray-700 mb-3">
-              <span className="text-red-600">*</span> Please select an insurer you have placed business with in the last 12 months:
-            </label>
-            <select
-              value={data.deepDiveInsurer}
-              onChange={(e) => updateData({ deepDiveInsurer: e.target.value })}
-              className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-              required
-            >
-              <option value="">Select an insurer</option>
-              {insurers.map((insurer) => (
-                <option key={insurer} value={insurer}>
-                  {insurer}
-                </option>
-              ))}
-            </select>
-          </div>
-
-          {data.deepDiveInsurer && (
+          {highestProportionInsurer ? (
             <>
+              <div className="bg-white border border-blue-300 rounded-lg p-4">
+                <p className="text-sm text-gray-700">
+                  These questions focus on your experience with:
+                </p>
+                <p className="text-lg font-semibold text-blue-900 mt-2">{highestProportionInsurer}</p>
+              </div>
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
                   <span className="text-red-600">*</span> Thinking about the five key areas you used to assess this insurer, what influenced the service rating you gave, and how could their service evolve over the next 12 months to better meet your needs?
@@ -495,12 +500,18 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
                 </select>
               </div>
             </>
+          ) : (
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <p className="text-sm text-yellow-800">
+                Please complete the ratings in Question 19 to enable the Deep Dive Questions.
+              </p>
+            </div>
           )}
         </div>
 
-        {data.selectedInsurer && (
+        {highestProportionInsurer && (
           <div className="space-y-6 bg-blue-50 p-6 rounded-lg">
-            <p className="text-sm text-gray-700 font-medium">Questions 21-24 based on: {data.selectedInsurer === 'Other' ? data.selectedInsurerOther : data.selectedInsurer}</p>
+            <p className="text-sm text-gray-700 font-medium">Questions 21-24 based on: {highestProportionInsurer}</p>
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
