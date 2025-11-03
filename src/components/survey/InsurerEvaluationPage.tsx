@@ -42,9 +42,19 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
   ];
 
   const handleInsurerChange = (insurer: string) => {
-    const newInsurers = data.primaryInsurers.includes(insurer)
-      ? data.primaryInsurers.filter((i) => i !== insurer)
-      : [...data.primaryInsurers, insurer];
+    const isSelected = data.primaryInsurers.includes(insurer);
+    let newInsurers;
+
+    if (isSelected) {
+      newInsurers = data.primaryInsurers.filter((i) => i !== insurer);
+    } else {
+      if (data.primaryInsurers.length < 3) {
+        newInsurers = [...data.primaryInsurers, insurer];
+      } else {
+        return;
+      }
+    }
+
     updateData({ primaryInsurers: newInsurers });
   };
 
@@ -190,8 +200,9 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            18. Which insurer(s) do you place most of your business with, up to 80%?
+            18. Which three insurer(s) do you place most of your business with, up to 80%?
           </label>
+          <p className="text-sm text-gray-600 mb-4">Please select exactly three insurers</p>
           <div className="space-y-2">
             {insurers.map((insurer) => (
               <label key={insurer} className="flex items-center">
@@ -199,63 +210,82 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
                   type="checkbox"
                   checked={data.primaryInsurers.includes(insurer)}
                   onChange={() => handleInsurerChange(insurer)}
-                  className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
+                  disabled={!data.primaryInsurers.includes(insurer) && data.primaryInsurers.length >= 3}
+                  className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                 />
-                <span className="ml-3 text-gray-700">{insurer}</span>
+                <span className={`ml-3 ${!data.primaryInsurers.includes(insurer) && data.primaryInsurers.length >= 3 ? 'text-gray-400' : 'text-gray-700'}`}>
+                  {insurer}
+                </span>
               </label>
             ))}
           </div>
+          {data.primaryInsurers.length > 0 && (
+            <p className="text-sm text-blue-600 mt-3">
+              Selected: {data.primaryInsurers.length} of 3
+            </p>
+          )}
         </div>
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
             19. Evaluate the service you have received from your insurance partners in the following areas over the last 12 months
           </label>
-          <p className="text-sm text-gray-600 mb-4">Please rate a minimum of two insurer partners (1-5 scale)</p>
-          <div className="overflow-x-auto">
-            <table className="min-w-full bg-white border border-gray-200 table-fixed">
-              <thead>
-                <tr className="bg-gray-50">
-                  <th className="w-48 px-4 py-3 text-left text-xs font-medium text-gray-700 border-b">Insurer</th>
-                  {ratingCategories.map((cat) => (
-                    <th key={cat.key} className="w-40 px-4 py-3 text-left text-xs font-medium text-gray-700 border-b break-words">
-                      {cat.label}
-                    </th>
-                  ))}
-                </tr>
-              </thead>
-              <tbody>
-                {insurers.map((insurer) => (
-                  <tr key={insurer} className="border-b hover:bg-gray-50">
-                    <td className="px-4 py-3 text-sm font-medium text-gray-700">{insurer}</td>
+          <p className="text-sm text-gray-600 mb-4">Please rate the three insurers you selected in Question 18 (1-5 scale)</p>
+          {data.primaryInsurers.length === 0 ? (
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
+              <p className="text-sm text-yellow-800">Please select three insurers in Question 18 above to enable this rating table.</p>
+            </div>
+          ) : data.primaryInsurers.length < 3 ? (
+            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-4">
+              <p className="text-sm text-yellow-800">Please select {3 - data.primaryInsurers.length} more insurer(s) in Question 18 to complete your selection.</p>
+            </div>
+          ) : null}
+          {data.primaryInsurers.length > 0 && (
+            <div className="overflow-x-auto">
+              <table className="min-w-full bg-white border border-gray-200 table-fixed">
+                <thead>
+                  <tr className="bg-gray-50">
+                    <th className="w-48 px-4 py-3 text-left text-xs font-medium text-gray-700 border-b">Insurer</th>
                     {ratingCategories.map((cat) => (
-                      <td key={cat.key} className="px-4 py-3">
-                        <select
-                          value={data.insurerRatings[insurer]?.[cat.key as keyof typeof data.insurerRatings[string]] || 0}
-                          onChange={(e) => handleInsurerRating(insurer, cat.key, parseInt(e.target.value))}
-                          className="w-20 px-2 py-1 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                        >
-                          <option value={0}>-</option>
-                          {cat.key === 'proportion'
-                            ? [10, 20, 30, 40, 50, 60, 70, 80, 90, 100].map((percent) => (
-                                <option key={percent} value={percent}>
-                                  {percent}%
-                                </option>
-                              ))
-                            : [1, 2, 3, 4, 5].map((rating) => (
-                                <option key={rating} value={rating}>
-                                  {rating}
-                                </option>
-                              ))
-                          }
-                        </select>
-                      </td>
+                      <th key={cat.key} className="w-40 px-4 py-3 text-left text-xs font-medium text-gray-700 border-b break-words">
+                        {cat.label}
+                      </th>
                     ))}
                   </tr>
-                ))}
-              </tbody>
-            </table>
-          </div>
+                </thead>
+                <tbody>
+                  {data.primaryInsurers.map((insurer) => (
+                    <tr key={insurer} className="border-b hover:bg-gray-50">
+                      <td className="px-4 py-3 text-sm font-medium text-gray-700">{insurer}</td>
+                      {ratingCategories.map((cat) => (
+                        <td key={cat.key} className="px-4 py-3">
+                          <select
+                            value={data.insurerRatings[insurer]?.[cat.key as keyof typeof data.insurerRatings[string]] || 0}
+                            onChange={(e) => handleInsurerRating(insurer, cat.key, parseInt(e.target.value))}
+                            className="w-20 px-2 py-1 text-sm border border-gray-300 rounded focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                          >
+                            <option value={0}>-</option>
+                            {cat.key === 'proportion'
+                              ? [10, 20, 30, 40, 50, 60, 70, 80, 90, 100].map((percent) => (
+                                  <option key={percent} value={percent}>
+                                    {percent}%
+                                  </option>
+                                ))
+                              : [1, 2, 3, 4, 5].map((rating) => (
+                                  <option key={rating} value={rating}>
+                                    {rating}
+                                  </option>
+                                ))
+                            }
+                          </select>
+                        </td>
+                      ))}
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          )}
         </div>
 
         <div>
