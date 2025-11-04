@@ -288,7 +288,7 @@ export default function BotswanaLifeSurvey() {
 
   const handleSubmit = async () => {
     try {
-      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbx28nAPvlXLfX4Qa3SKep3Vz8ZFKBHgYYybqHlw5qoXMN9ItMPyfnT9LIha02GwV1QOvg/exec';
+      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzF9QuPkmczwX22VQdS2WETYXo80e1Hk3O7IcbCYC6nJoEd69LwBQTZUx61_TJ_ra2_eQ/exec';
 
       const SURVEY_COUNTRY = "Botswana";
       const SURVEY_SOURCE_TYPE = "Life Insurance";
