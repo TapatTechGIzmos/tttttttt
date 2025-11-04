@@ -45,7 +45,9 @@ export default function BrokerageOverviewPage({ data, updateData }: BrokerageOve
   const handleDistrictChange = (district: string) => {
     const newDistricts = data.districts.includes(district)
       ? data.districts.filter((d) => d !== district)
-      : [...data.districts, district];
+      : data.districts.length < 5
+      ? [...data.districts, district]
+      : data.districts;
     updateData({ districts: newDistricts });
   };
 
@@ -77,7 +79,7 @@ export default function BrokerageOverviewPage({ data, updateData }: BrokerageOve
       <div className="space-y-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            6. In which provinces/districts do you mainly source your clients/business?
+            6. In which 5 provinces/districts do you mainly source your clients/business? (select up to 5)
           </label>
           <div className="space-y-2">
             {districts.map((district) => (
