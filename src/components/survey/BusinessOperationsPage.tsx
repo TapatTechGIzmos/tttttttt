@@ -474,7 +474,7 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
                 <strong className="text-blue-900">2 - Repeatable (Level 2):</strong> Basic, consistent steps exist — often manual or spreadsheet-based — but not enforced or controlled.
               </div>
               <div>
-                <strong className="text-blue-900">3 - Defined (Level 3):</strong> Processes are fully documented, standardized, and consistently followed across the entire team.
+                <strong className="text-blue-900">3 - Defined (Level 3):</strong> Processes are fully documented, standardised, and consistently followed across the entire team.
               </div>
               <div>
                 <strong className="text-blue-900">4 - Measured (Level 4):</strong> Key performance metrics are tracked — processes are actively monitored, controlled, and improved using data.
