@@ -8,7 +8,7 @@ import BrokerageOverviewPage from '../components/survey/BrokerageOverviewPage';
 import BusinessOperationsPage from '../components/survey/BusinessOperationsPage';
 import InsurerEvaluationPage from '../components/survey/InsurerEvaluationPage';
 import MarketOutlookPage from '../components/survey/MarketOutlookPage';
-import { getFactorLabelByKey, getQ19Data } from '../utils/surveyHelpers';
+import { submitSurvey } from '../utils/surveySubmission';
 
 // === SURVEY DATA INTERFACE ===
 export interface SurveyData {
@@ -268,105 +268,10 @@ export default function BotswanaSurvey() {
 
   const handleSubmit = async () => {
     try {
-      const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbz3XVQG3-N1Sp7zkRRtEoWqwJkVEaBjVyDUFmVOboV4wEualrQfgqiAdXqvPJhWD6O1tg/exec';
-
-      const SURVEY_COUNTRY = "Botswana";
-      const SURVEY_SOURCE_TYPE = "Short-Term Insurance";
-
-      const rankedFactors = Object.entries(surveyData.placementFactors)
-        .filter(([, rank]) => rank > 0)
-        .sort(([, rankA], [, rankB]) => (rankA as number) - (rankB as number))
-        .map(([key]) => getFactorLabelByKey(key));
-
-      const q19Data = getQ19Data(surveyData);
-
-      const payload: { [key: string]: any } = {
-        'Timestamp': new Date().toISOString(),
-        'Survey Country': SURVEY_COUNTRY,
-        'Survey Source': SURVEY_SOURCE_TYPE,
-        'Q1 Name': surveyData.name || '',
-        'Q1 Company': surveyData.company || '',
-        'Q1 Email': surveyData.email || '',
-        'Q1 District (Profile)': surveyData.province || '',
-        'Q2 Years Experience (Broker)': surveyData.yearsOfExperience || '',
-        'Q3 Job Function': surveyData.jobFunction || '',
-        'Q4 Gender': surveyData.gender || '',
-        'Q5 Age Group': surveyData.ageGroup || '',
-        'Q6 Sourcing Districts': surveyData.districts?.join(', ') || '',
-        'Q7 Brokerage Size': surveyData.brokerageSize || '',
-        'Q8 Services Provided': surveyData.services?.join(', ') || '',
-        'Q9 Short-Term Focus': surveyData.shortTermFocus || '',
-        'Q10 Personal Lines Segment': surveyData.personalLinesSegment?.join(', ') || '',
-        'Q11 Corporate Client Size': surveyData.corporateClientSize?.join(', ') || '',
-        'Q12 Commercial Focus %': surveyData.commercialPercentage || 0,
-        'Q13 Top Products': surveyData.topProducts?.join(', ') || '',
-        'Q14 Top Lead Sources': surveyData.leadSources?.join(', ') + (surveyData.leadSourcesOther ? ` (Other: ${surveyData.leadSourcesOther})` : ''),
-        'Q15 GWP Bracket': surveyData.gwpBracket || '',
-        'Q16a Maturity: Client Acquisition': surveyData.maturityRatings?.clientAcquisition || 0,
-        'Q16b Maturity: Quotation Process': surveyData.maturityRatings?.quotation || 0,
-        'Q16c Maturity: Policy Admin': surveyData.maturityRatings?.policyAdmin || 0,
-        'Q16d Maturity: Claims Management': surveyData.maturityRatings?.claimsManagement || 0,
-        'Q16e Maturity: Financial Management': surveyData.maturityRatings?.financialManagement || 0,
-        'Q16f Maturity: Other Processes': surveyData.maturityRatings?.otherProcesses || 0,
-        'Q17 Rank 1 Factor': rankedFactors[0] || '',
-        'Q17 Rank 2 Factor': rankedFactors[1] || '',
-        'Q17 Rank 3 Factor': rankedFactors[2] || '',
-        'Q17 Rank 4 Factor': rankedFactors[3] || '',
-        'Q17 Rank 5 Factor': rankedFactors[4] || '',
-        'Q17 Rank 6 Factor': rankedFactors[5] || '',
-        'Q18 Primary Insurers': surveyData.primaryInsurers?.join(', ') || '',
-        'Q20 Largest Insurer': surveyData.selectedInsurer || '',
-        'Q20 Largest Insurer Other': surveyData.selectedInsurerOther || '',
-        'Deep Dive Insurer': surveyData.deepDiveInsurer || '',
-        'Q21 Service Influence': surveyData.serviceInfluence || '',
-        'Q22 Product Classes': surveyData.productClasses || '',
-        'Q23 Value Beyond Price': surveyData.valueBeyondPrice || '',
-        'Q24 Claims Experience': surveyData.claimsExperience || '',
-        'DDR: Access Decision Makers': surveyData.detailedRatings?.decisionMakers || '',
-        'DDR: Brand Reputation': surveyData.detailedRatings?.brandReputation || '',
-        'DDR: Claims Handling': surveyData.detailedRatings?.claimsHandling || '',
-        'DDR: Winning Business': surveyData.detailedRatings?.winningBusiness || '',
-        'DDR: Insurer Appetite': surveyData.detailedRatings?.insurerAppetite || '',
-        'DDR: Price Competitiveness': surveyData.detailedRatings?.priceCompetitiveness || '',
-        'DDR: Regional Presence': surveyData.detailedRatings?.regionalPresence || '',
-        'DDR: Responsiveness': surveyData.detailedRatings?.responsiveness || '',
-        'DDR: Tech Innovation': surveyData.detailedRatings?.techInnovation || '',
-        'DDR: Mid-Term Alterations': surveyData.detailedRatings?.midTermAlterations || '',
-        'DDR: Renewal Terms': surveyData.detailedRatings?.renewalTerms || '',
-        'DDR: Training & Support': surveyData.detailedRatings?.trainingSupport || '',
-        'DDR: Brand Word 1': surveyData.brandWords?.[0] || '',
-        'DDR: Brand Word 2': surveyData.brandWords?.[1] || '',
-        'DDR: Brand Word 3': surveyData.brandWords?.[2] || '',
-        'DDR: Service Improvement Select': surveyData.serviceImprovement || '',
-        'Q21 Service Description': surveyData.serviceDescription || '',
-        'Q22 Product Differentiation': surveyData.productDifferentiation || '',
-        'Q23 Relationship Experience': surveyData.relationshipExperience || '',
-        'Q24 Knowledge Rating (Deep Dive)': surveyData.knowledgeRating || '',
-        'Q25 Biggest Concerns': surveyData.biggestConcerns?.join(', ') || '',
-        'Q26 Barriers to Business': surveyData.barriersToBusiness || '',
-        'Q27 Succession Plan': surveyData.successionPlan || '',
-        'Q28 Growth Products': surveyData.growthProducts || '',
-        'Q29 AI Usage': surveyData.aiUsage || 0,
-        'Q30 Communication Preferences': surveyData.communicationPreferences?.join(', ') + (surveyData.communicationOther ? ` (Other: ${surveyData.communicationOther})` : ''),
-        'Q31 Support Needs': surveyData.supportNeeds?.join(', ') + (surveyData.supportNeedsOther ? ` (Other: ${surveyData.supportNeedsOther})` : ''),
-        'Q32 Opt Out': surveyData.optOut || false,
-        ...q19Data,
-      };
-
-      const response = await fetch(SCRIPT_URL, {
-        method: 'POST',
-        mode: 'no-cors',
-        cache: 'no-cache',
-        headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-        body: new URLSearchParams(payload).toString(),
-      });
-
-      console.log('Survey submitted:', payload);
-      alert(`Survey results submitted for ${SURVEY_COUNTRY} - ${SURVEY_SOURCE_TYPE}!`);
+      await submitSurvey(surveyData, 'Botswana', 'Short-Term Insurance');
       navigate('/broker-survey');
     } catch (error) {
       console.error('Submission failed:', error);
-      alert('Submission failed. Please check the console for network errors.');
     }
   };
 
