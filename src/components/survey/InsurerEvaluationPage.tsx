@@ -147,7 +147,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
       <div className="space-y-6">
         <div>
           <label className="block text-xl font-bold text-gray-900 mb-3">
-            17. Rank the factors you consider when placing business with an insurance company.
+            19. Rank the factors you consider when placing business with an insurance company.
           </label>
 
           <div className="mb-4 pl-6">
@@ -222,7 +222,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            18. Which three insurer(s) do you place most of your business with, up to 80%?
+            20. Which three insurer(s) do you place most of your business with, up to 80%?
           </label>
           <p className="text-sm text-gray-600 mb-4">Please select exactly three insurers</p>
           <div className="space-y-2">
@@ -250,7 +250,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            19. Evaluate the service you have received from your insurance partners in the following areas over the last 12 months
+            21. Evaluate the service you have received from your insurance partners in the following areas over the last 12 months
           </label>
           <p className="text-sm text-gray-600 mb-4">Please rate the three insurers you selected in Question 18 (1-5 scale)</p>
           {data.primaryInsurers.length === 0 ? (
@@ -312,7 +312,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            20. Insurer with the largest portion of business
+            22. Insurer with the largest portion of business
           </label>
           {highestProportionInsurer ? (
             <div className="bg-blue-100 border border-blue-300 rounded-lg p-4">
@@ -515,7 +515,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                21. Service - Describe why you gave this rating, how this insurer can improve, and how you would like the service experience to evolve
+                23. Service - Describe why you gave this rating, how this insurer can improve, and how you would like the service experience to evolve
               </label>
               <textarea
                 value={data.serviceDescription}
@@ -528,7 +528,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                22. Product: What differentiates this insurer from other insurance providers?
+                24. Product: What differentiates this insurer from other insurance providers?
               </label>
               <textarea
                 value={data.productDifferentiation}
@@ -541,7 +541,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                23. Relationship Management - Describe your experience and what improvements would better serve your needs
+                25. Relationship Management - Describe your experience and what improvements would better serve your needs
               </label>
               <textarea
                 value={data.relationshipExperience}
@@ -554,7 +554,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">
-                24. How would you rate the level of knowledge, education and resources provided by this insurer?
+                26. How would you rate the level of knowledge, education and resources provided by this insurer?
               </label>
               <div className="space-y-2">
                 {['Very Poor', 'Poor', 'Satisfactory', 'Good', 'Excellent'].map((option) => (

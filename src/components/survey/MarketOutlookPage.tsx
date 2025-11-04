@@ -67,7 +67,7 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
       <div className="space-y-6">
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            25. What are your biggest concerns for the coming year,2026?
+            27. What are your biggest concerns for the coming year,2026?
           </label>
           <div className="space-y-2">
             {concerns.map((concern) => (
@@ -86,7 +86,7 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            26. What specific barriers are you facing when trying to convert prospects into clients, and how can this insurer help address these challenges?
+            28. What specific barriers are you facing when trying to convert prospects into clients, and how can this insurer help address these challenges?
           </label>
           <textarea
             value={data.barriersToBusiness}
@@ -99,7 +99,7 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            27. Does your brokerage have a succession plan for leadership or ownership transitions due to retirement or unexpected vacancies?
+            29. Does your brokerage have a succession plan for leadership or ownership transitions due to retirement or unexpected vacancies?
           </label>
           <div className="space-y-2">
             {[
@@ -126,7 +126,7 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            28. Which products do you expect to be the biggest source of growth for your business in the coming year,2026?
+            30. Which products do you expect to be the biggest source of growth for your business in the coming year,2026?
           </label>
           <textarea
             value={data.growthProducts}
@@ -139,7 +139,7 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            29. Indicate the extent to which your business is currently using or plans to use Artificial Intelligence (AI)
+            31. Indicate the extent to which your business is currently using or plans to use Artificial Intelligence (AI)
           </label>
           <div className="bg-gray-50 p-4 rounded-lg mb-4">
             <p className="text-sm text-gray-600 leading-relaxed">
@@ -169,7 +169,7 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            30. How could your insurer partners better communicate with your company to improve service levels?
+            32. How could your insurer partners better communicate with your company to improve service levels?
           </label>
           <div className="space-y-2">
             {communicationPreferences.map((pref) => (
@@ -197,7 +197,7 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            31. What types of support from insurers would help you attract new clients? (Select all that apply)
+            33. What types of support from insurers would help you attract new clients? (Select all that apply)
           </label>
           <div className="space-y-2">
             {supportNeeds.map((support) => (
