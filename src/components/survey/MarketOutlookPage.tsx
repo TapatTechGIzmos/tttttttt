@@ -232,7 +232,7 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
               className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 mt-1"
             />
             <span className="ml-3 text-sm text-gray-700">
-              <strong>32. Future correspondence:</strong> I wish to opt out of any follow-up correspondence regarding the Long-term Insurance 2025/26 survey, and I acknowledge that this is inclusive of not being sent the executive summary report and being included in the prize draw.
+              <strong>34. Future correspondence:</strong> I wish to opt out of any follow-up correspondence regarding the Long-term Insurance 2025/26 survey, and I acknowledge that this is inclusive of not being sent the executive summary report and being included in the prize draw.
             </span>
           </label>
         </div>
