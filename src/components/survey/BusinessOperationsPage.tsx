@@ -74,12 +74,12 @@ const salesApproaches = [
 ];
 
 const maturityAreas = [
-  { key: 'clientAcquisition', label: '16a. Client Acquisition and Relationship Management' },
-  { key: 'quotation', label: '16b. Quotation process' },
-  { key: 'policyAdmin', label: '16c. Policy Administration and Management' },
-  { key: 'claimsManagement', label: '16d. Claims Management and Support' },
-  { key: 'financialManagement', label: '16e. Financial Management' },
-  { key: 'otherProcesses', label: '16f. All Other Processes' },
+  { key: 'clientAcquisition', label: '15a. Client Acquisition and Relationship Management' },
+  { key: 'quotation', label: '15b. Quotation process' },
+  { key: 'policyAdmin', label: '15c. Policy Administration and Management' },
+  { key: 'claimsManagement', label: '15d. Claims Management and Support' },
+  { key: 'financialManagement', label: '15e. Financial Management' },
+  { key: 'otherProcesses', label: '15f. All Other Processes' },
 ];
 
 export default function BusinessOperationsPage({ data, updateData, surveyType = 'short-term' }: BusinessOperationsPageProps) {
@@ -367,48 +367,12 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
           </div>
         </div>
 
-        {/* Question 15 */}
+        {/* Question 15: Maturity Ratings */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            15. What are your main distribution channels? (Select up to 2)
+          <label className="block text-lg font-semibold text-gray-900 mb-4">
+            15. Rate your organisation's maturity in each identified area using the five-point scale
           </label>
-          <div className="flex flex-wrap gap-3">
-            {distributionChannels.map((channel) => (
-              <label key={channel} className="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  checked={localDistributionChannels.includes(channel)}
-                  onChange={() => handleDistributionChannelChange(channel)}
-                  className="w-4 h-4 text-blue-600 focus:ring-blue-500"
-                />
-                <span>{channel}</span>
-              </label>
-            ))}
-          </div>
-        </div>
 
-        {/* Question 16 */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            16. What are your main sales approaches? (Select up to 2)
-          </label>
-          <div className="flex flex-wrap gap-3">
-            {salesApproaches.map((approach) => (
-              <label key={approach} className="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  checked={localSalesApproaches.includes(approach)}
-                  onChange={() => handleSalesApproachChange(approach)}
-                  className="w-4 h-4 text-blue-600 focus:ring-blue-500"
-                />
-                <span>{approach}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {/* Question 17a–f: Maturity Ratings – FINAL PREMIUM DESIGN */}
-        <div>
           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-5 rounded-xl mb-8 border border-blue-100">
             <p className="text-sm text-gray-700 leading-relaxed font-medium space-y-1">
               <div>
