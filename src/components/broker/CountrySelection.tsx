@@ -21,7 +21,7 @@ const SurveyButton: React.FC<SurveyButtonProps> = ({ type, onClick }) => (
 
 export default function CountrySelection() {
   const navigate = useNavigate();
-  const countries = ['Botswana', 'Namibia', 'South Africa', 'Zambia'];
+  const countries = ['Botswana', 'Zambia'];
 
   const handleSurveyClick = (country: string, type: 'life' | 'non-life') => {
     if (country === 'Botswana' && type === 'non-life') {
