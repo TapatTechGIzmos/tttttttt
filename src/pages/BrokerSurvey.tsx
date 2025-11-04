@@ -4,6 +4,8 @@ import SurveyBenefits from '../components/broker/SurveyBenefits';
 import CountrySelection from '../components/broker/CountrySelection';
 
 export default function BrokerSurvey() {
+  console.log('BrokerSurvey component is rendering');
+
   return (
     <div className="py-16 bg-gray-50">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">

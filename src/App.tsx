@@ -10,6 +10,8 @@ import ThoughtLeadership from './pages/ThoughtLeadership';
 import NewsRoom from './pages/NewsRoom';
 
 function App() {
+  console.log('App component rendering');
+
   return (
     <Router>
       <div className="min-h-screen flex flex-col">
@@ -22,7 +24,7 @@ function App() {
             <Route path="/broker-survey/botswana-life" element={<BotswanaLifeSurvey />} />
             <Route path="/thought-leadership" element={<ThoughtLeadership />} />
             <Route path="/news" element={<NewsRoom />} />
-            <Route path="*" element={<Navigate to="/" replace />} />
+            <Route path="*" element={<div className="p-8"><h1 className="text-2xl">404 - Page Not Found</h1><p>Path: {window.location.pathname}</p></div>} />
           </Routes>
         </main>
         <Footer />
