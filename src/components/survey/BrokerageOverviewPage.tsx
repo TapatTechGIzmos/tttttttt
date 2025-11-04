@@ -78,9 +78,14 @@ export default function BrokerageOverviewPage({ data, updateData }: BrokerageOve
 
       <div className="space-y-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            6. In which 5 provinces/districts do you mainly source your clients/business? (select up to 5)
-          </label>
+          <div className="flex items-center justify-between mb-3">
+            <label className="block text-sm font-medium text-gray-700">
+              6. In which 5 provinces/districts do you mainly source your clients/business? (select up to 5)
+            </label>
+            <span className="text-xs text-blue-600 font-medium">
+              Selected: {data.districts.length} of 5
+            </span>
+          </div>
           <div className="space-y-2">
             {districts.map((district) => (
               <label key={district} className="flex items-center">
@@ -88,9 +93,10 @@ export default function BrokerageOverviewPage({ data, updateData }: BrokerageOve
                   type="checkbox"
                   checked={data.districts.includes(district)}
                   onChange={() => handleDistrictChange(district)}
-                  className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
+                  disabled={!data.districts.includes(district) && data.districts.length >= 5}
+                  className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                 />
-                <span className="ml-3 text-gray-700">{district}</span>
+                <span className={`ml-3 ${!data.districts.includes(district) && data.districts.length >= 5 ? 'text-gray-400' : 'text-gray-700'}`}>{district}</span>
               </label>
             ))}
           </div>

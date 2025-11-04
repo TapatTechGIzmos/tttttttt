@@ -42,7 +42,9 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
   const handleConcernChange = (concern: string) => {
     const newConcerns = data.biggestConcerns.includes(concern)
       ? data.biggestConcerns.filter((c) => c !== concern)
-      : [...data.biggestConcerns, concern];
+      : data.biggestConcerns.length < 5
+      ? [...data.biggestConcerns, concern]
+      : data.biggestConcerns;
     updateData({ biggestConcerns: newConcerns });
   };
 
@@ -66,9 +68,14 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
 
       <div className="space-y-6">
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            27. What are your biggest concerns for the coming year,2026?
-          </label>
+          <div className="flex items-center justify-between mb-3">
+            <label className="block text-sm font-medium text-gray-700">
+              27. What are your biggest concerns for the coming year,2026? (select up to 5)
+            </label>
+            <span className="text-xs text-blue-600 font-medium">
+              Selected: {data.biggestConcerns.length} of 5
+            </span>
+          </div>
           <div className="space-y-2">
             {concerns.map((concern) => (
               <label key={concern} className="flex items-center">
@@ -76,9 +83,10 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
                   type="checkbox"
                   checked={data.biggestConcerns.includes(concern)}
                   onChange={() => handleConcernChange(concern)}
-                  className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
+                  disabled={!data.biggestConcerns.includes(concern) && data.biggestConcerns.length >= 5}
+                  className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                 />
-                <span className="ml-3 text-gray-700">{concern}</span>
+                <span className={`ml-3 ${!data.biggestConcerns.includes(concern) && data.biggestConcerns.length >= 5 ? 'text-gray-400' : 'text-gray-700'}`}>{concern}</span>
               </label>
             ))}
           </div>

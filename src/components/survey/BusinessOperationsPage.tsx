@@ -74,12 +74,12 @@ const salesApproaches = [
 ];
 
 const maturityAreas = [
-  { key: 'clientAcquisition', label: '18a. Client Acquisition and Relationship Management' },
-  { key: 'quotation', label: '18b. Quotation process' },
-  { key: 'policyAdmin', label: '18c. Policy Administration and Management' },
-  { key: 'claimsManagement', label: '18d. Claims Management and Support' },
-  { key: 'financialManagement', label: '18e. Financial Management' },
-  { key: 'otherProcesses', label: '18f. All Other Processes' },
+  { key: 'clientAcquisition', label: '16a. Client Acquisition and Relationship Management' },
+  { key: 'quotation', label: '16b. Quotation process' },
+  { key: 'policyAdmin', label: '16c. Policy Administration and Management' },
+  { key: 'claimsManagement', label: '16d. Claims Management and Support' },
+  { key: 'financialManagement', label: '16e. Financial Management' },
+  { key: 'otherProcesses', label: '16f. All Other Processes' },
 ];
 
 export default function BusinessOperationsPage({ data, updateData, surveyType = 'short-term' }: BusinessOperationsPageProps) {
@@ -370,29 +370,7 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
         {/* Question 15 */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            15. How comfortable are you using digital tools to manage your personal lines business?
-          </label>
-          <div className="space-y-2">
-            {['Very uncomfortable', 'Somewhat uncomfortable', 'Neutral', 'Somewhat comfortable', 'Very comfortable'].map((option) => (
-              <label key={option} className="flex items-center">
-                <input
-                  type="radio"
-                  name="digitalComfort"
-                  value={option}
-                  checked={data.digitalComfort === option}
-                  onChange={(e) => updateData({ digitalComfort: e.target.value })}
-                  className="w-4 h-4 text-blue-600 focus:ring-blue-500"
-                />
-                <span className="ml-3 text-gray-700">{option}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {/* Question 16 */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            16. Which of the following tasks do you currently use digital tools or platforms for?
+            15. Which of the following tasks do you currently use digital tools or platforms for?
           </label>
           <div className="space-y-2">
             {[
@@ -423,46 +401,10 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
           </div>
         </div>
 
-        {/* Question 17 */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            17. What are the main reasons you would use more digital tools in your workflow? (Select up to 3)
-          </label>
-          <div className="space-y-2">
-            {[
-              'To save time',
-              'To improve customer experience',
-              'To reduce admin workload',
-              'To remain competitive',
-              'To lower operational costs',
-              'I wouldn\'t use more digital tools'
-            ].map((reason) => (
-              <label key={reason} className="flex items-center">
-                <input
-                  type="checkbox"
-                  checked={(data.digitalToolReasons || []).includes(reason)}
-                  onChange={(e) => {
-                    const currentReasons = data.digitalToolReasons || [];
-                    const newReasons = e.target.checked
-                      ? currentReasons.length < 3 ? [...currentReasons, reason] : currentReasons
-                      : currentReasons.filter(r => r !== reason);
-                    updateData({ digitalToolReasons: newReasons });
-                  }}
-                  disabled={!(data.digitalToolReasons || []).includes(reason) && (data.digitalToolReasons || []).length >= 3}
-                  className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
-                />
-                <span className={`ml-3 ${!(data.digitalToolReasons || []).includes(reason) && (data.digitalToolReasons || []).length >= 3 ? 'text-gray-400' : 'text-gray-700'}`}>
-                  {reason}
-                </span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        {/* Question 18: Maturity Ratings */}
+        {/* Question 16: Maturity Ratings */}
         <div>
           <label className="block text-lg font-semibold text-gray-900 mb-4">
-            18. Rate your organisation's maturity in each identified area using the five-point scale
+            16. Rate your organisation's maturity in each identified area using the five-point scale
           </label>
 
           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-5 rounded-xl mb-8 border border-blue-100">
@@ -576,6 +518,42 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
                   </div>
                 </div>
               </div>
+            ))}
+          </div>
+        </div>
+
+        {/* Question 17 */}
+        <div>
+          <label className="block text-sm font-medium text-gray-700 mb-3">
+            17. What are the main reasons you would use more digital tools in your workflow? (Select up to 3)
+          </label>
+          <div className="space-y-2">
+            {[
+              'To save time',
+              'To improve customer experience',
+              'To reduce admin workload',
+              'To remain competitive',
+              'To lower operational costs',
+              'I wouldn\'t use more digital tools'
+            ].map((reason) => (
+              <label key={reason} className="flex items-center">
+                <input
+                  type="checkbox"
+                  checked={(data.digitalToolReasons || []).includes(reason)}
+                  onChange={(e) => {
+                    const currentReasons = data.digitalToolReasons || [];
+                    const newReasons = e.target.checked
+                      ? currentReasons.length < 3 ? [...currentReasons, reason] : currentReasons
+                      : currentReasons.filter(r => r !== reason);
+                    updateData({ digitalToolReasons: newReasons });
+                  }}
+                  disabled={!(data.digitalToolReasons || []).includes(reason) && (data.digitalToolReasons || []).length >= 3}
+                  className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                />
+                <span className={`ml-3 ${!(data.digitalToolReasons || []).includes(reason) && (data.digitalToolReasons || []).length >= 3 ? 'text-gray-400' : 'text-gray-700'}`}>
+                  {reason}
+                </span>
+              </label>
             ))}
           </div>
         </div>
