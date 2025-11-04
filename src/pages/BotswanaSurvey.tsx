@@ -9,98 +9,10 @@ import BusinessOperationsPage from '../components/survey/BusinessOperationsPage'
 import InsurerEvaluationPage from '../components/survey/InsurerEvaluationPage';
 import MarketOutlookPage from '../components/survey/MarketOutlookPage';
 import { submitSurvey } from '../utils/surveySubmission';
+import { SurveyData } from '../types/surveyTypes';
 
-// === SURVEY DATA INTERFACE ===
-export interface SurveyData {
-  name: string;
-  company: string;
-  email: string;
-  province: string;
-  yearsOfExperience: string;
-  jobFunction: string;
-  gender: string;
-  ageGroup: string;
-  districts: string[];
-  brokerageSize: string;
-  services: string[];
-  shortTermFocus: string;
-  personalLinesSegment: string[];
-  corporateClientSize: string[];
-  commercialPercentage: number;
-  topProducts: string[];
-  topProductsPersonal: string[];
-  topProductsCommercial: string[];
-  leadSources: string[];
-  leadSourcesOther: string;
-  digitalComfort: string;
-  digitalTasks: string[];
-  digitalToolReasons: string[];
-  gwpBracket: string;
-  maturityRatings: {
-    clientAcquisition: number;
-    quotation: number;
-    policyAdmin: number;
-    claimsManagement: number;
-    financialManagement: number;
-    otherProcesses: number;
-  };
-  placementFactors: {
-    flexibility: number;
-    businessGrowth: number;
-    operationalEfficiency: number;
-    productQuality: number;
-    bindersAndIncentives: number;
-    brandAndMarket: number;
-  };
-  primaryInsurers: string[];
-  insurerRatings: {
-    [key: string]: {
-      underwriting: number;
-      documentation: number;
-      claims: number;
-      postSale: number;
-      relationship: number;
-      proportion: number;
-    };
-  };
-  selectedInsurer: string;
-  selectedInsurerOther: string;
-  deepDiveInsurer: string;
-  serviceInfluence: string;
-  productClasses: string;
-  valueBeyondPrice: string;
-  claimsExperience: string;
-  detailedRatings: {
-    decisionMakers: string;
-    brandReputation: string;
-    claimsHandling: string;
-    winningBusiness: string;
-    insurerAppetite: string;
-    priceCompetitiveness: string;
-    regionalPresence: string;
-    responsiveness: string;
-    techInnovation: string;
-    midTermAlterations: string;
-    renewalTerms: string;
-    trainingSupport: string;
-  };
-  brandWords: string[];
-  serviceImprovement: string;
-  serviceDescription: string;
-  productDifferentiation: string;
-  relationshipExperience: string;
-  knowledgeRating: string;
-  biggestConcerns: string[];
-  barriersToBusiness: string;
-  successionPlan: string;
-  growthProducts: string;
-  aiUsage: number;
-  communicationPreferences: string[];
-  communicationOther: string;
-  supportNeeds: string[];
-  supportNeedsOther: string;
-  optOut: boolean;
-}
+// === RE-EXPORT TYPE FOR COMPATIBILITY ===
+export type { SurveyData };
 
 // === INITIAL STATE ===
 const initialSurveyData: SurveyData = {
@@ -119,6 +31,7 @@ const initialSurveyData: SurveyData = {
   personalLinesSegment: [],
   corporateClientSize: [],
   commercialPercentage: 50,
+  commercialFocus: 0,
   topProducts: [],
   topProductsPersonal: [],
   topProductsCommercial: [],
@@ -171,6 +84,7 @@ const initialSurveyData: SurveyData = {
   serviceImprovement: '',
   serviceDescription: '',
   productDifferentiation: '',
+  relationshipManagement: '',
   relationshipExperience: '',
   knowledgeRating: '',
   biggestConcerns: [],

@@ -1,4 +1,4 @@
-import { SurveyData } from '../pages/BotswanaSurvey';
+import { SurveyData } from '../types/surveyTypes';
 
 const INSURER_SLOTS = 3;
 const SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbzF9QuPkmczwX22VQdS2WETYXo80e1Hk3O7IcbCYC6nJoEd69LwBQTZUx61_TJ_ra2_eQ/exec';
