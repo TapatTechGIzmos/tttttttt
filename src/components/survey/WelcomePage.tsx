@@ -22,7 +22,7 @@ export default function WelcomePage({ data, updateData }: WelcomePageProps) {
         <ul className="space-y-3">
           <li className="flex items-start">
             <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" />
-            <span className="text-gray-700">This survey will take approximately 15-20 minutes to complete</span>
+            <span className="text-gray-700">This survey will take approximately 10-15 minutes to complete</span>
           </li>
           <li className="flex items-start">
             <CheckCircle className="w-5 h-5 text-blue-600 mt-0.5 mr-3 flex-shrink-0" />
