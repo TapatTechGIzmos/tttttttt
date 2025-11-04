@@ -136,28 +136,7 @@ export default function BrokerageOverviewPage({ data, updateData }: BrokerageOve
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            9. Within Short-Term, what does your brokerage focus on?
-          </label>
-          <div className="space-y-2">
-            {['Personal Lines', 'Commercial/Corporate Lines', 'Both Personal and Commercial/Corporate Lines'].map((option) => (
-              <label key={option} className="flex items-center">
-                <input
-                  type="radio"
-                  name="shortTermFocus"
-                  value={option}
-                  checked={data.shortTermFocus === option}
-                  onChange={(e) => updateData({ shortTermFocus: e.target.value })}
-                  className="w-4 h-4 text-blue-600 focus:ring-blue-500"
-                />
-                <span className="ml-3 text-gray-700">{option}</span>
-              </label>
-            ))}
-          </div>
-        </div>
-
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            10. Within your personal Lines, which customer segment do you primarily target? (Select all that apply)
+            9. Within your personal Lines, which customer segment do you primarily target? (Select all that apply)
           </label>
           <div className="space-y-2">
             {personalLinesSegments.map((segment) => (
@@ -176,7 +155,7 @@ export default function BrokerageOverviewPage({ data, updateData }: BrokerageOve
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            11. Which size of corporate clients do you mainly target with your Commercial/Corporate Lines? (Select all that apply)
+            10. Which size of corporate clients do you mainly target with your Commercial/Corporate Lines? (Select all that apply)
           </label>
           <div className="space-y-2">
             {corporateClientSizes.map((size) => (
