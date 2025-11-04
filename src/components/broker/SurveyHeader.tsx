@@ -7,7 +7,7 @@ export default function SurveyHeader() {
       <p className="text-xl text-gray-600">Your Voice Matters!</p>
       <div className="mt-8 inline-block bg-blue-50 border border-blue-200 rounded-lg px-6 py-4">
         <p className="text-blue-800">
-          Inaugural survey focusing on Botswana, Namibia, South Africa, and Zambia
+          Inaugural survey focusing on Botswana, and Zambia
         </p>
       </div>
     </div>
