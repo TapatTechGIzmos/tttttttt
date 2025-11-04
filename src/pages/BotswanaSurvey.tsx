@@ -32,6 +32,9 @@ export interface SurveyData {
   topProductsCommercial: string[];
   leadSources: string[];
   leadSourcesOther: string;
+  digitalComfort: string;
+  digitalTasks: string[];
+  digitalToolReasons: string[];
   gwpBracket: string;
   maturityRatings: {
     clientAcquisition: number;
@@ -121,6 +124,9 @@ const initialSurveyData: SurveyData = {
   topProductsCommercial: [],
   leadSources: [],
   leadSourcesOther: '',
+  digitalComfort: '',
+  digitalTasks: [],
+  digitalToolReasons: [],
   gwpBracket: '',
   maturityRatings: {
     clientAcquisition: 0,
