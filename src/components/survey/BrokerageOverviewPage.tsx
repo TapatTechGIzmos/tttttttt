@@ -124,9 +124,14 @@ export default function BrokerageOverviewPage({ data, updateData }: BrokerageOve
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            8. What services does your insurance brokerage provide? (Select all that apply)
-          </label>
+          <div className="flex items-center justify-between mb-3">
+            <label className="block text-sm font-medium text-gray-700">
+              8. What services does your insurance brokerage provide? (Select all that apply)
+            </label>
+            <span className="text-xs text-blue-600 font-medium">
+              Selected: {data.services.length} of {services.length}
+            </span>
+          </div>
           <div className="space-y-2">
             {services.map((service) => (
               <label key={service} className="flex items-center">
@@ -143,9 +148,14 @@ export default function BrokerageOverviewPage({ data, updateData }: BrokerageOve
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            9. Within your personal Lines, which customer segment do you primarily target? (Select all that apply)
-          </label>
+          <div className="flex items-center justify-between mb-3">
+            <label className="block text-sm font-medium text-gray-700">
+              9. Within your personal Lines, which customer segment do you primarily target? (Select all that apply)
+            </label>
+            <span className="text-xs text-blue-600 font-medium">
+              Selected: {data.personalLinesSegment.length} of {personalLinesSegments.length}
+            </span>
+          </div>
           <div className="space-y-2">
             {personalLinesSegments.map((segment) => (
               <label key={segment} className="flex items-center">
@@ -162,9 +172,14 @@ export default function BrokerageOverviewPage({ data, updateData }: BrokerageOve
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            10. Which size of corporate clients do you mainly target with your Commercial/Corporate Lines? (Select all that apply)
-          </label>
+          <div className="flex items-center justify-between mb-3">
+            <label className="block text-sm font-medium text-gray-700">
+              10. Which size of corporate clients do you mainly target with your Commercial/Corporate Lines? (Select all that apply)
+            </label>
+            <span className="text-xs text-blue-600 font-medium">
+              Selected: {data.corporateClientSize.length} of {corporateClientSizes.length}
+            </span>
+          </div>
           <div className="space-y-2">
             {corporateClientSizes.map((size) => (
               <label key={size} className="flex items-center">

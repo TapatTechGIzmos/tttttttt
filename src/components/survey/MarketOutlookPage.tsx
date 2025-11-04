@@ -176,9 +176,14 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            32. How could your insurer partners better communicate with your company to improve service levels?
-          </label>
+          <div className="flex items-center justify-between mb-3">
+            <label className="block text-sm font-medium text-gray-700">
+              32. How could your insurer partners better communicate with your company to improve service levels?
+            </label>
+            <span className="text-xs text-blue-600 font-medium">
+              Selected: {data.communicationPreferences.length} of {communicationPreferences.length}
+            </span>
+          </div>
           <div className="space-y-2">
             {communicationPreferences.map((pref) => (
               <label key={pref} className="flex items-center">
@@ -204,9 +209,14 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            33. What types of support from insurers would help you attract new clients? (Select all that apply)
-          </label>
+          <div className="flex items-center justify-between mb-3">
+            <label className="block text-sm font-medium text-gray-700">
+              33. What types of support from insurers would help you attract new clients? (Select all that apply)
+            </label>
+            <span className="text-xs text-blue-600 font-medium">
+              Selected: {data.supportNeeds.length} of {supportNeeds.length}
+            </span>
+          </div>
           <div className="space-y-2">
             {supportNeeds.map((support) => (
               <label key={support} className="flex items-center">

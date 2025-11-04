@@ -221,9 +221,14 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
         </div>
 
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            20. Which three insurer(s) do you place most of your business with, up to 80%?
-          </label>
+          <div className="flex items-center justify-between mb-3">
+            <label className="block text-sm font-medium text-gray-700">
+              20. Which three insurer(s) do you place most of your business with, up to 80%?
+            </label>
+            <span className="text-xs text-blue-600 font-medium">
+              Selected: {data.primaryInsurers.length} of 3
+            </span>
+          </div>
           <p className="text-sm text-gray-600 mb-4">Please select exactly three insurers</p>
           <div className="space-y-2">
             {insurers.map((insurer) => (
@@ -241,11 +246,6 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
               </label>
             ))}
           </div>
-          {data.primaryInsurers.length > 0 && (
-            <p className="text-sm text-blue-600 mt-3">
-              Selected: {data.primaryInsurers.length} of 3
-            </p>
-          )}
         </div>
 
         <div>

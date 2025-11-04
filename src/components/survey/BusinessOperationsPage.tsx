@@ -349,9 +349,14 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
 
         {/* Question 14 */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            14. What are your top 3 sources of leads? (Select up to 3)
-          </label>
+          <div className="flex items-center justify-between mb-3">
+            <label className="block text-sm font-medium text-gray-700">
+              14. What are your top 3 sources of leads? (Select up to 3)
+            </label>
+            <span className="text-xs text-blue-600 font-medium">
+              Selected: {localLeadSources.length} of 3
+            </span>
+          </div>
           <div className="flex flex-wrap gap-3">
             {leadSources.map((source) => (
               <label key={source} className="flex items-center space-x-2">
@@ -369,9 +374,14 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
 
         {/* Question 15 */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            15. Which of the following tasks do you currently use digital tools or platforms for?
-          </label>
+          <div className="flex items-center justify-between mb-3">
+            <label className="block text-sm font-medium text-gray-700">
+              15. Which of the following tasks do you currently use digital tools or platforms for?
+            </label>
+            <span className="text-xs text-blue-600 font-medium">
+              Selected: {(data.digitalTasks || []).length} of 7
+            </span>
+          </div>
           <div className="space-y-2">
             {[
               'Quoting and comparing products',
@@ -524,9 +534,14 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
 
         {/* Question 17 */}
         <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            17. What are the main reasons you would use more digital tools in your workflow? (Select up to 3)
-          </label>
+          <div className="flex items-center justify-between mb-3">
+            <label className="block text-sm font-medium text-gray-700">
+              17. What are the main reasons you would use more digital tools in your workflow? (Select up to 3)
+            </label>
+            <span className="text-xs text-blue-600 font-medium">
+              Selected: {(data.digitalToolReasons || []).length} of 3
+            </span>
+          </div>
           <div className="space-y-2">
             {[
               'To save time',
