@@ -35,11 +35,11 @@ export default function BrokerageOverviewPage({ data, updateData }: BrokerageOve
   ];
 
   const corporateClientSizes = [
-    'Small Enterprise 10 to 49 employees',
-    'Medium Enterprise 50 to 100 employees',
-    'Medium to Large Enterprise 100 to 300 employees',
-    'Medium to Large Enterprise 300 plus employees',
-    'Do not offer commercial lines',
+    'Micro Enterprise: <10 employees',
+    'Small Enterprise: 10 to 49 employees',
+    'Medium Enterprise: 50 to 99 employees',
+    'Commercial Enterprise: 100 to 299 employees',
+    'Large Corporate Enterprise: 300 plus employees',
   ];
 
   const handleDistrictChange = (district: string) => {
