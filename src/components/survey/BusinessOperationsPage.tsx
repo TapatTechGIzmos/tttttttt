@@ -74,12 +74,12 @@ const salesApproaches = [
 ];
 
 const maturityAreas = [
-  { key: 'clientAcquisition', label: '16a. Client Acquisition and Relationship Management' },
-  { key: 'quotation', label: '16b. Quotation process' },
-  { key: 'policyAdmin', label: '16c. Policy Administration and Management' },
-  { key: 'claimsManagement', label: '16d. Claims Management and Support' },
-  { key: 'financialManagement', label: '16e. Financial Management' },
-  { key: 'otherProcesses', label: '16f. All Other Processes' },
+  { key: 'clientAcquisition', label: '15a. Client Acquisition and Relationship Management' },
+  { key: 'quotation', label: '15b. Quotation process' },
+  { key: 'policyAdmin', label: '15c. Policy Administration and Management' },
+  { key: 'claimsManagement', label: '15d. Claims Management and Support' },
+  { key: 'financialManagement', label: '15e. Financial Management' },
+  { key: 'otherProcesses', label: '15f. All Other Processes' },
 ];
 
 export default function BusinessOperationsPage({ data, updateData, surveyType = 'short-term' }: BusinessOperationsPageProps) {
@@ -259,10 +259,10 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
       <h2 className="text-2xl font-bold text-gray-900">Business Operations and Performance</h2>
       <div className="space-y-6">
 
-        {/* Question 12 */}
+        {/* Question 11 */}
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            12. Over the last 12 months, what percentage of your book would you consider commercially focused?
+            11. Over the last 12 months, what percentage of your book would you consider commercially focused?
           </label>
           <div className="flex items-center gap-4">
             <span className="text-xs text-gray-500 w-8">0</span>
@@ -284,7 +284,7 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
         <div className="space-y-6">
           <div>
             <label className="block text-lg font-semibold text-gray-900 mb-4">
-              13. What are your top products you offer to your clients?
+              12. What are your top products you offer to your clients?
             </label>
 
             {/* Personal Products */}
@@ -351,7 +351,7 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
         <div>
           <div className="flex items-center justify-between mb-3">
             <label className="block text-sm font-medium text-gray-700">
-              14. What are your top 3 sources of leads? (Select up to 3)
+              13. What are your top 3 sources of leads? (Select up to 3)
             </label>
             <span className="text-xs text-blue-600 font-medium">
               Selected: {localLeadSources.length} of 3
@@ -376,7 +376,7 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
         <div>
           <div className="flex items-center justify-between mb-3">
             <label className="block text-sm font-medium text-gray-700">
-              15. Which of the following tasks do you currently use digital tools or platforms for?
+              14. Which of the following tasks do you currently use digital tools or platforms for?
             </label>
             <span className="text-xs text-blue-600 font-medium">
               Selected: {(data.digitalTasks || []).length} of 7
@@ -414,7 +414,7 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
         {/* Question 16: Maturity Ratings */}
         <div>
           <label className="block text-lg font-semibold text-gray-900 mb-4">
-            16. Rate your organisation's maturity in each identified area using the five-point scale
+            15. Rate your organisation's maturity in each identified area using the five-point scale
           </label>
 
           <div className="bg-gradient-to-r from-blue-50 to-indigo-50 p-5 rounded-xl mb-8 border border-blue-100">
@@ -536,7 +536,7 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
         <div>
           <div className="flex items-center justify-between mb-3">
             <label className="block text-sm font-medium text-gray-700">
-              17. What are the main reasons you would use more digital tools in your workflow? (Select up to 3)
+              16. What are the main reasons you would use more digital tools in your workflow? (Select up to 3)
             </label>
             <span className="text-xs text-blue-600 font-medium">
               Selected: {(data.digitalToolReasons || []).length} of 3

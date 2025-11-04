@@ -70,7 +70,7 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
         <div>
           <div className="flex items-center justify-between mb-3">
             <label className="block text-sm font-medium text-gray-700">
-              27. What are your biggest concerns for the coming year,2026? (select up to 5)
+              26. What are your biggest concerns for the coming year,2026? (select up to 5)
             </label>
             <span className="text-xs text-blue-600 font-medium">
               Selected: {data.biggestConcerns.length} of 5
@@ -94,7 +94,7 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            28. What specific barriers are you facing when trying to convert prospects into clients, and how can this insurer help address these challenges?
+            27. What specific barriers are you facing when trying to convert prospects into clients, and how can this insurer help address these challenges?
           </label>
           <textarea
             value={data.barriersToBusiness}
@@ -107,7 +107,7 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            29. Does your brokerage have a succession plan for leadership or ownership transitions due to retirement or unexpected vacancies?
+            28. Does your brokerage have a succession plan for leadership or ownership transitions due to retirement or unexpected vacancies?
           </label>
           <div className="space-y-2">
             {[
@@ -134,7 +134,7 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            30. Which products do you expect to be the biggest source of growth for your business in the coming year,2026?
+            29. Which products do you expect to be the biggest source of growth for your business in the coming year,2026?
           </label>
           <textarea
             value={data.growthProducts}
@@ -147,7 +147,7 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            31. Indicate the extent to which your business is currently using or plans to use Artificial Intelligence (AI)
+            30. Indicate the extent to which your business is currently using or plans to use Artificial Intelligence (AI)
           </label>
           <div className="bg-gray-50 p-4 rounded-lg mb-4">
             <p className="text-sm text-gray-600 leading-relaxed">
@@ -178,7 +178,7 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
         <div>
           <div className="flex items-center justify-between mb-3">
             <label className="block text-sm font-medium text-gray-700">
-              32. How could your insurer partners better communicate with your company to improve service levels?
+              31. How could your insurer partners better communicate with your company to improve service levels?
             </label>
             <span className="text-xs text-blue-600 font-medium">
               Selected: {data.communicationPreferences.length} of {communicationPreferences.length}
@@ -211,7 +211,7 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
         <div>
           <div className="flex items-center justify-between mb-3">
             <label className="block text-sm font-medium text-gray-700">
-              33. What types of support from insurers would help you attract new clients? (Select all that apply)
+              32. What types of support from insurers would help you attract new clients? (Select all that apply)
             </label>
             <span className="text-xs text-blue-600 font-medium">
               Selected: {data.supportNeeds.length} of {supportNeeds.length}
@@ -250,7 +250,7 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
               className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 mt-1"
             />
             <span className="ml-3 text-sm text-gray-700">
-              <strong>34. Future correspondence:</strong> I wish to opt out of any follow-up correspondence regarding the Long-term Insurance 2025/26 survey, and I acknowledge that this is inclusive of not being sent the executive summary report and being included in the prize draw.
+              <strong>33. Future correspondence:</strong> I wish to opt out of any follow-up correspondence regarding the Long-term Insurance 2025/26 survey, and I acknowledge that this is inclusive of not being sent the executive summary report and being included in the prize draw.
             </span>
           </label>
         </div>
