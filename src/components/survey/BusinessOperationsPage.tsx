@@ -4,15 +4,45 @@ import { SurveyData } from '../../pages/BotswanaSurvey';
 interface BusinessOperationsPageProps {
   data: SurveyData;
   updateData: (data: Partial<SurveyData>) => void;
+  surveyType?: 'life' | 'short-term';
 }
 
-const products = [
-  'Automative cover',
-  'Property Cover',
-  'Marine Cover',
-  'Specialist Risk cover',
-  'General Liability cover',
-  'Credit/Finance Guarantee cover',
+const lifePersonalProducts = [
+  'Term Life Cover (e.g., Botshelo Term Life Cover, Mothusi Term Shield, Digital Term - DT)',
+  'Whole of Life Cover (e.g., Botshelo Whole of Life, Mothusi Lifeline, Poelo Whole of Life)',
+  'Funeral Cover (e.g., Boikanyo, Mosako, Kgomotso, Digital Funeral - DF)',
+  'Credit Life cover (e.g., Mothusi Home Secure, Poelo Credit Life, Digital Credit Life - DCL)',
+  'Living benefits - Critical illness, disability cover',
+  'Retirement/Investment products',
+];
+
+const lifeCommercialProducts = [
+  'Group Life Assurance (GLA)',
+  'Group Funeral Schemes (GFS)',
+  'Group Credit Life (GCL)',
+  'Group Critical Illness Cover',
+];
+
+const shortTermPersonalProducts = [
+  'Motor Insurance (Vehicle Insurance)',
+  'House Owners / Buildings Insurance',
+  'House Holders / Contents Insurance',
+  'Personal All Risk (for portable valuables)',
+  'Personal Accident Insurance',
+  'Personal Liability Insurance',
+];
+
+const shortTermCommercialProducts = [
+  'Commercial Property/Fire & Allied Perils',
+  'Motor Fleet Insurance',
+  'Business All Risks',
+  'Business Interruption Insurance',
+  'Engineering Insurance (including Contractor\'s All Risk - CAR)',
+  'Marine Insurance',
+  'Public Liability Insurance',
+  'Professional Indemnity (PI) Insurance',
+  'Fidelity Guarantee/Bankers Blanket Bonds',
+  'Agriculture Insurance',
 ];
 
 const leadSources = [
@@ -52,18 +82,26 @@ const maturityAreas = [
   { key: 'otherProcesses', label: '16f. All Other Processes' },
 ];
 
-export default function BusinessOperationsPage({ data, updateData }: BusinessOperationsPageProps) {
+export default function BusinessOperationsPage({ data, updateData, surveyType = 'short-term' }: BusinessOperationsPageProps) {
   // === LOCAL STATE ===
   const [commercialFocus, setCommercialFocus] = useState<number>(data.commercialFocus ?? 0);
   const [localTopProducts, setLocalTopProducts] = useState<string[]>(data.topProducts ?? []);
+  const [localTopProductsPersonal, setLocalTopProductsPersonal] = useState<string[]>(data.topProductsPersonal ?? []);
+  const [localTopProductsCommercial, setLocalTopProductsCommercial] = useState<string[]>(data.topProductsCommercial ?? []);
   const [localLeadSources, setLocalLeadSources] = useState<string[]>(data.leadSources ?? []);
   const [localDistributionChannels, setLocalDistributionChannels] = useState<string[]>(data.distributionChannels ?? []);
   const [localSalesApproaches, setLocalSalesApproaches] = useState<string[]>(data.salesApproaches ?? []);
   const [localMaturityRatings, setLocalMaturityRatings] = useState<Record<string, number>>(data.maturityRatings ?? {});
 
+  const isLifeSurvey = surveyType === 'life';
+  const personalProducts = isLifeSurvey ? lifePersonalProducts : shortTermPersonalProducts;
+  const commercialProducts = isLifeSurvey ? lifeCommercialProducts : shortTermCommercialProducts;
+
   // === SYNC PARENT → LOCAL ===
   useEffect(() => setCommercialFocus(data.commercialFocus ?? 0), [data.commercialFocus]);
   useEffect(() => setLocalTopProducts(data.topProducts ?? []), [data.topProducts]);
+  useEffect(() => setLocalTopProductsPersonal(data.topProductsPersonal ?? []), [data.topProductsPersonal]);
+  useEffect(() => setLocalTopProductsCommercial(data.topProductsCommercial ?? []), [data.topProductsCommercial]);
   useEffect(() => setLocalLeadSources(data.leadSources ?? []), [data.leadSources]);
   useEffect(() => setLocalDistributionChannels(data.distributionChannels ?? []), [data.distributionChannels]);
   useEffect(() => setLocalSalesApproaches(data.salesApproaches ?? []), [data.salesApproaches]);
@@ -96,6 +134,18 @@ export default function BusinessOperationsPage({ data, updateData }: BusinessOpe
       debounceUpdate('topProducts', localTopProducts, 500);
     }
   }, [localTopProducts]);
+
+  useEffect(() => {
+    if (JSON.stringify(localTopProductsPersonal) !== JSON.stringify(data.topProductsPersonal ?? [])) {
+      debounceUpdate('topProductsPersonal', localTopProductsPersonal, 500);
+    }
+  }, [localTopProductsPersonal]);
+
+  useEffect(() => {
+    if (JSON.stringify(localTopProductsCommercial) !== JSON.stringify(data.topProductsCommercial ?? [])) {
+      debounceUpdate('topProductsCommercial', localTopProductsCommercial, 500);
+    }
+  }, [localTopProductsCommercial]);
 
   useEffect(() => {
     if (JSON.stringify(localLeadSources) !== JSON.stringify(data.leadSources ?? [])) {
@@ -141,6 +191,26 @@ export default function BusinessOperationsPage({ data, updateData }: BusinessOpe
       prev.includes(product)
         ? prev.filter(p => p !== product)
         : prev.length < 4
+        ? [...prev, product]
+        : prev
+    );
+  };
+
+  const handlePersonalProductChange = (product: string) => {
+    setLocalTopProductsPersonal(prev =>
+      prev.includes(product)
+        ? prev.filter(p => p !== product)
+        : prev.length < 5
+        ? [...prev, product]
+        : prev
+    );
+  };
+
+  const handleCommercialProductChange = (product: string) => {
+    setLocalTopProductsCommercial(prev =>
+      prev.includes(product)
+        ? prev.filter(p => p !== product)
+        : prev.length < 5
         ? [...prev, product]
         : prev
     );
@@ -211,22 +281,69 @@ export default function BusinessOperationsPage({ data, updateData }: BusinessOpe
         </div>
 
         {/* Question 13 */}
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            13. What are the top 4 products you offer to your clients?
-          </label>
-          <div className="flex flex-wrap gap-3">
-            {products.map((product) => (
-              <label key={product} className="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  checked={localTopProducts.includes(product)}
-                  onChange={() => handleProductChange(product)}
-                  className="w-4 h-4 text-blue-600 focus:ring-blue-500"
-                />
-                <span>{product}</span>
-              </label>
-            ))}
+        <div className="space-y-6">
+          <div>
+            <label className="block text-lg font-semibold text-gray-900 mb-4">
+              13. What are your top products you offer to your clients?
+            </label>
+
+            {/* Personal Products */}
+            <div className="mb-6">
+              <div className="flex items-center justify-between mb-3">
+                <h4 className="text-sm font-medium text-gray-700">
+                  {isLifeSurvey ? '🏠 Personal (Retail) Life Products' : '🏠 Personal / Domestic Short-Term Products'}
+                </h4>
+                <span className="text-xs text-blue-600 font-medium">
+                  Selected: {localTopProductsPersonal.length} of 5
+                </span>
+              </div>
+              <p className="text-xs text-gray-600 mb-3">Select up to 5 personal products</p>
+              <div className="space-y-2">
+                {personalProducts.map((product) => (
+                  <label key={product} className="flex items-start space-x-2">
+                    <input
+                      type="checkbox"
+                      checked={localTopProductsPersonal.includes(product)}
+                      onChange={() => handlePersonalProductChange(product)}
+                      disabled={!localTopProductsPersonal.includes(product) && localTopProductsPersonal.length >= 5}
+                      className="w-4 h-4 text-blue-600 focus:ring-blue-500 mt-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                    />
+                    <span className={`text-sm ${!localTopProductsPersonal.includes(product) && localTopProductsPersonal.length >= 5 ? 'text-gray-400' : 'text-gray-700'}`}>
+                      {product}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
+
+            {/* Commercial Products */}
+            <div>
+              <div className="flex items-center justify-between mb-3">
+                <h4 className="text-sm font-medium text-gray-700">
+                  {isLifeSurvey ? '🏢 Group Life (Corporate Risk) Products' : '🏢 Commercial / Business Short-Term Products'}
+                </h4>
+                <span className="text-xs text-blue-600 font-medium">
+                  Selected: {localTopProductsCommercial.length} of 5
+                </span>
+              </div>
+              <p className="text-xs text-gray-600 mb-3">Select up to 5 commercial products</p>
+              <div className="space-y-2">
+                {commercialProducts.map((product) => (
+                  <label key={product} className="flex items-start space-x-2">
+                    <input
+                      type="checkbox"
+                      checked={localTopProductsCommercial.includes(product)}
+                      onChange={() => handleCommercialProductChange(product)}
+                      disabled={!localTopProductsCommercial.includes(product) && localTopProductsCommercial.length >= 5}
+                      className="w-4 h-4 text-blue-600 focus:ring-blue-500 mt-1 disabled:opacity-50 disabled:cursor-not-allowed"
+                    />
+                    <span className={`text-sm ${!localTopProductsCommercial.includes(product) && localTopProductsCommercial.length >= 5 ? 'text-gray-400' : 'text-gray-700'}`}>
+                      {product}
+                    </span>
+                  </label>
+                ))}
+              </div>
+            </div>
           </div>
         </div>
 

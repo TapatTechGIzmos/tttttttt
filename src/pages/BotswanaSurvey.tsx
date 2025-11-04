@@ -28,6 +28,8 @@ export interface SurveyData {
   corporateClientSize: string[];
   commercialPercentage: number;
   topProducts: string[];
+  topProductsPersonal: string[];
+  topProductsCommercial: string[];
   leadSources: string[];
   leadSourcesOther: string;
   gwpBracket: string;
@@ -115,6 +117,8 @@ const initialSurveyData: SurveyData = {
   corporateClientSize: [],
   commercialPercentage: 50,
   topProducts: [],
+  topProductsPersonal: [],
+  topProductsCommercial: [],
   leadSources: [],
   leadSourcesOther: '',
   gwpBracket: '',
@@ -392,6 +396,7 @@ export default function BotswanaSurvey() {
             <CurrentPageComponent
               data={surveyData}
               updateData={updateSurveyData}
+              surveyType="short-term"
             />
           </div>
 
