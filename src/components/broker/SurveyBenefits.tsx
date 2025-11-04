@@ -24,29 +24,29 @@ function Benefit({ icon, title, description }: BenefitProps) {
 export default function SurveyBenefits() {
   const benefits = [
     {
-      icon: <LineChart className="h-6 w-6 text-blue-600" />,
-      title: "Shape the Future of Insurance",
-      description: "Your feedback directly influences how insurers improve their services across Southern Africa, covering Botswana, Namibia, South Africa, and Zambia."
+      icon: <Gift className="h-6 w-6 text-blue-600" />,
+      title: "Prize Draw: FREE Corporate Website Package!",
+      description: "Win Your Digital Storefront: Enter the draw to win one of five professional website packages (valued at P5,000), instantly building your online presence and modernizing your brokerage—at zero cost to you. EVERY valid participant receives an A5 Hard Cover Notebook."
     },
     {
       icon: <FileText className="h-6 w-6 text-blue-600" />,
-      title: "Exclusive Insights",
-      description: "Receive a complimentary executive summary of the comprehensive report (valued at R12,000) with regional market insights."
+      title: "Guaranteed Value: Exclusive Insights",
+      description: "Strategize for 2026: Receive a complimentary executive summary of the final report (valued at R12,000), giving you unparalleled insight into regional trends, client expectations, and growth opportunities across Botswana and Zambia."
     },
     {
-      icon: <Gift className="h-6 w-6 text-blue-600" />,
-      title: "Win Valuable Prizes",
-      description: "Enter our prize draw for a R5,000 shopping voucher. Double your chances by participating in both commercial and personal lines surveys."
+      icon: <LineChart className="h-6 w-6 text-blue-600" />,
+      title: "Elevate Your Influence",
+      description: "Your confidential feedback directly influences how insurers improve their services, products, and broker support across the region. This is your platform to impact industry-wide change."
+    },
+    {
+      icon: <FileText className="h-6 w-6 text-blue-600" />,
+      title: "Exclusive Insights & Competitive Edge",
+      description: "The report summary provides hyper-localized market data essential for identifying under-served niches, optimizing your product mix, and staying ahead of direct competitors."
     },
     {
       icon: <Clock className="h-6 w-6 text-blue-600" />,
-      title: "Quick and Flexible",
-      description: "Takes just 5-10 minutes to complete. Start now and finish later with our save-and-continue feature."
-    },
-    {
-      icon: <Lock className="h-6 w-6 text-blue-600" />,
-      title: "Completely Confidential",
-      description: "Your responses are 100% anonymous, protecting your insurer relationships while enabling honest feedback."
+      title: "Quick, Confidential, and Flexible",
+      description: "Takes just 5-10 minutes to complete. Start now and finish later with our save-and-continue feature. Your responses are 100% anonymous, protecting your insurer relationships while enabling honest, unfiltered feedback."
     }
   ];
 
