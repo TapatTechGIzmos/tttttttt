@@ -291,7 +291,7 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
             <div className="mb-6">
               <div className="flex items-center justify-between mb-3">
                 <h4 className="text-sm font-medium text-gray-700">
-                  {isLifeSurvey ? '🏠 Personal (Retail) Life Products' : '🏠 Personal / Domestic Short-Term Products'}
+                  {isLifeSurvey ? '🏠 Personal (Retail) Life Products' : 'Personal / Domestic Short-Term Products'}
                 </h4>
                 <span className="text-xs text-blue-600 font-medium">
                   Selected: {localTopProductsPersonal.length} of 5
@@ -320,7 +320,7 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
             <div>
               <div className="flex items-center justify-between mb-3">
                 <h4 className="text-sm font-medium text-gray-700">
-                  {isLifeSurvey ? '🏢 Group Life (Corporate Risk) Products' : '🏢 Commercial / Business Short-Term Products'}
+                  {isLifeSurvey ? 'Group Life (Corporate Risk) Products' : '🏢 Commercial / Business Short-Term Products'}
                 </h4>
                 <span className="text-xs text-blue-600 font-medium">
                   Selected: {localTopProductsCommercial.length} of 5
