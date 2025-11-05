@@ -124,6 +124,7 @@ export default function BotswanaLifeSurvey() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(0);
   const [surveyData, setSurveyData] = useState<SurveyData>(initialSurveyData);
+  const [isSubmitting, setIsSubmitting] = useState(false);
 
   const CurrentPageComponent = pages[currentPage].component;
   const progress = Math.round(((currentPage + 1) / pages.length) * 100);
@@ -200,11 +201,13 @@ export default function BotswanaLifeSurvey() {
 
 
   const handleSubmit = async () => {
-    try {
-      await submitSurvey(surveyData, 'Botswana', 'Life Business Line');
+    const result = await submitSurvey(surveyData, setIsSubmitting);
+
+    if (result.success) {
+      alert(result.message);
       navigate('/broker-survey');
-    } catch (error) {
-      console.error('Submission failed:', error);
+    } else {
+      alert(result.message);
     }
   };
 
@@ -267,9 +270,10 @@ export default function BotswanaLifeSurvey() {
             {isLastPage ? (
               <button
                 onClick={handleSubmit}
-                className="flex items-center px-8 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-all"
+                disabled={isSubmitting}
+                className="flex items-center px-8 py-3 bg-green-600 text-white rounded-lg font-medium hover:bg-green-700 transition-all disabled:opacity-50 disabled:cursor-not-allowed"
               >
-                Submit Survey
+                {isSubmitting ? 'Submitting...' : 'Submit Survey'}
               </button>
             ) : (
               <button
