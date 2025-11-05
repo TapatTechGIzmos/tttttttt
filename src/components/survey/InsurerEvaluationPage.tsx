@@ -347,7 +347,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  <span className="text-red-600">*</span> Thinking about the five key areas you used to assess this insurer, what influenced the service rating you gave, and how could their service evolve over the next 12 months to better meet your needs?
+                  <span className="text-red-600">*</span> 20a. Thinking about the five key areas you used to assess this insurer, what influenced the service rating you gave, and how could their service evolve over the next 12 months to better meet your needs?
                 </label>
                 <p className="text-xs text-gray-600 mb-3">(Please include any specific experiences, strengths, or areas for improvement you feel are important)</p>
                 <textarea
@@ -362,7 +362,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  <span className="text-red-600">*</span> Please name one or more product classes acquired from this insurer?
+                  <span className="text-red-600">*</span>  20b. Please name one or more product classes acquired from this insurer?
                 </label>
                 <textarea
                   value={data.productClasses}
@@ -376,7 +376,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  <span className="text-red-600">*</span> Recognising that competitive pricing is essential in today's soft market, what other factors do you consider equally important. What could this insurer offer or improve to deliver value beyond price alone?
+                  <span className="text-red-600">*</span>  20c. Recognising that competitive pricing is essential in today's soft market, what other factors do you consider equally important. What could this insurer offer or improve to deliver value beyond price alone?
                 </label>
                 <textarea
                   value={data.valueBeyondPrice}
@@ -390,7 +390,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  <span className="text-red-600">*</span> Claims Experience - Please describe your experience over the past year with this insurer in relation to claims—both your own and your customers. What worked well, and what improvements would you like to see to better support you and your clients going forward?
+                  <span className="text-red-600">*</span> 20d. Claims Experience - Please describe your experience over the past year with this insurer in relation to claims—both your own and your customers. What worked well, and what improvements would you like to see to better support you and your clients going forward?
                 </label>
                 <p className="text-xs text-gray-600 mb-3">(Feel free to comment on areas such as claims handling efficiency, communication, transparency, support during the process, and outcomes.)</p>
                 <textarea
@@ -405,7 +405,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-3">
-                  Please rate the following areas of this insurer:
+                  21. Please rate the following areas of this insurer:
                 </label>
                 <div className="space-y-4">
                   {[
