@@ -23,14 +23,14 @@ const OPTIONS_Q8_SERVICES = [
   'Other Financial Advisory Services'
 ];
 
-const OPTIONS_Q9_SEGMENTS = [
+const OPTIONS_Q10_SEGMENTS = [
   'Mass market',
   'Middle market',
   'Affluent market',
   'We do not offer personal lines'
 ];
 
-const OPTIONS_Q10_CORP_SIZE = [
+const OPTIONS_Q11_CORP_SIZE = [
   'Micro Enterprise: <10 employees',
   'Small Enterprise: 10 to 49 employees',
   'Medium Enterprise: 50 to 99 employees',
@@ -38,39 +38,22 @@ const OPTIONS_Q10_CORP_SIZE = [
   'Large Corporate Enterprise: 300 plus employees'
 ];
 
-const OPTIONS_Q12_PRODUCTS_PERSONAL = [
+const OPTIONS_Q13_PERSONAL = [
   'Term Life Cover (e.g., Botshelo Term Life Cover, Mothusi Term Shield, Digital Term - DT)',
   'Whole of Life Cover (e.g., Botshelo Whole of Life, Mothusi Lifeline, Poelo Whole of Life)',
   'Funeral Cover (e.g., Boikanyo, Mosako, Kgomotso, Digital Funeral - DF)',
   'Credit Life cover (e.g., Mothusi Home Secure, Poelo Credit Life, Digital Credit Life - DCL)',
-  'Living benefits - Critical illness, disability cover',
-  'Retirement/Investment products',
-  'Motor Insurance (Vehicle Insurance)',
-  'House Owners / Buildings Insurance',
-  'House Holders / Contents Insurance',
-  'Personal All Risk (for portable valuables)',
-  'Personal Accident Insurance',
-  'Personal Liability Insurance'
+  'Living benefits - Critical illness, disability cover'
 ];
 
-const OPTIONS_Q12_PRODUCTS_COMMERCIAL = [
+const OPTIONS_Q13_COMMERCIAL = [
   'Group Life Assurance (GLA)',
   'Group Funeral Schemes (GFS)',
   'Group Credit Life (GCL)',
-  'Group Critical Illness Cover',
-  'Commercial Property/Fire & Allied Perils',
-  'Motor Fleet Insurance',
-  'Business All Risks',
-  'Business Interruption Insurance',
-  'Engineering Insurance (including Contractor\'s All Risk - CAR)',
-  'Marine Insurance',
-  'Public Liability Insurance',
-  'Professional Indemnity (PI) Insurance',
-  'Fidelity Guarantee/Bankers Blanket Bonds',
-  'Agriculture Insurance'
+  'Group Critical Illness Cover'
 ];
 
-const OPTIONS_Q13_LEADS = [
+const OPTIONS_Q14_LEADS = [
   'Buy hot leads list',
   'Existing client referral',
   'Leverage social media',
@@ -81,17 +64,8 @@ const OPTIONS_Q13_LEADS = [
   'Other (please specify)'
 ];
 
-const OPTIONS_Q14_DIGITAL_TASKS = [
-  'Quoting and comparing products',
-  'Submitting applications',
-  'Managing renewals',
-  'Processing MTAs',
-  'Communicating with clients',
-  'Claims handling',
-  'None of the above'
-];
 
-const OPTIONS_Q16_DIGITAL_REASONS = [
+const OPTIONS_Q16_REASONS = [
   'To save time',
   'To improve customer experience',
   'To reduce admin workload',
@@ -132,7 +106,7 @@ const OPTIONS_Q32_SUPPORT = [
   'Other (please specify)'
 ];
 
-const DEFAULT_INSURERS = [
+const OPTIONS_Q18_INSURERS = [
   'Bryte Risk Services',
   'Botswana Insurance Company',
   'Hollard Insurance Company',
@@ -210,35 +184,31 @@ export const submitSurvey = async (
     binaryData[`Q8: ${option} (Selected)`] = data.services?.includes(option) ? 1 : 0;
   });
 
-  OPTIONS_Q9_SEGMENTS.forEach(option => {
-    binaryData[`Q9: ${option} (Selected)`] = data.personalLinesSegment?.includes(option) ? 1 : 0;
+  OPTIONS_Q10_SEGMENTS.forEach(option => {
+    binaryData[`Q10: ${option} (Selected)`] = data.personalLinesSegment?.includes(option) ? 1 : 0;
   });
 
-  OPTIONS_Q10_CORP_SIZE.forEach(option => {
-    binaryData[`Q10: ${option} (Selected)`] = data.corporateClientSize?.includes(option) ? 1 : 0;
+  OPTIONS_Q11_CORP_SIZE.forEach(option => {
+    binaryData[`Q11: ${option} (Selected)`] = data.corporateClientSize?.includes(option) ? 1 : 0;
   });
 
-  OPTIONS_Q12_PRODUCTS_PERSONAL.forEach(option => {
-    binaryData[`Q12 Personal: ${option} (Selected)`] = data.topProductsPersonal?.includes(option) ? 1 : 0;
+  OPTIONS_Q13_PERSONAL.forEach(option => {
+    binaryData[`Q13 Personal: ${option} (Selected)`] = data.topProductsPersonal?.includes(option) ? 1 : 0;
   });
 
-  OPTIONS_Q12_PRODUCTS_COMMERCIAL.forEach(option => {
-    binaryData[`Q12 Commercial: ${option} (Selected)`] = data.topProductsCommercial?.includes(option) ? 1 : 0;
+  OPTIONS_Q13_COMMERCIAL.forEach(option => {
+    binaryData[`Q13 Commercial: ${option} (Selected)`] = data.topProductsCommercial?.includes(option) ? 1 : 0;
   });
 
-  OPTIONS_Q13_LEADS.forEach(option => {
-    binaryData[`Q13: ${option} (Selected)`] = data.leadSources?.includes(option) ? 1 : 0;
+  OPTIONS_Q14_LEADS.forEach(option => {
+    binaryData[`Q14: ${option} (Selected)`] = data.leadSources?.includes(option) ? 1 : 0;
   });
 
-  OPTIONS_Q14_DIGITAL_TASKS.forEach(option => {
-    binaryData[`Q14: ${option} (Selected)`] = (data.digitalTasks || []).includes(option) ? 1 : 0;
-  });
-
-  OPTIONS_Q16_DIGITAL_REASONS.forEach(option => {
+  OPTIONS_Q16_REASONS.forEach(option => {
     binaryData[`Q16: ${option} (Selected)`] = (data.digitalToolReasons || []).includes(option) ? 1 : 0;
   });
 
-  DEFAULT_INSURERS.forEach(insurer => {
+  OPTIONS_Q18_INSURERS.forEach(insurer => {
     binaryData[`Q18: ${insurer} (Selected)`] = data.primaryInsurers?.includes(insurer) ? 1 : 0;
   });
 
@@ -262,22 +232,23 @@ export const submitSurvey = async (
     'Q1 Name': data.name || '',
     'Q1 Company': data.company || '',
     'Q1 Email': data.email || '',
-    'Q1 District (Profile)': data.province || '',
+    'Q1 District (Profile)': data.district || data.District || '',
     'Q2 Years Experience (Broker)': data.yearsOfExperience || '',
     'Q3 Job Function': data.jobFunction || '',
     'Q4 Gender': data.gender || '',
     'Q5 Age Group': data.ageGroup || '',
 
-    ...binaryData,
-
     'Q7 Brokerage Size': data.brokerageSize || '',
-    'Q11 Commercial Focus %': data.commercialFocus || 0,
-    'Q15a: Client Acquisition (Maturity)': data.maturityRatings?.clientAcquisition || 0,
-    'Q15b: Quotation (Maturity)': data.maturityRatings?.quotation || 0,
-    'Q15c: Policy Admin (Maturity)': data.maturityRatings?.policyAdmin || 0,
-    'Q15d: Claims Management (Maturity)': data.maturityRatings?.claimsManagement || 0,
-    'Q15e: Financial Management (Maturity)': data.maturityRatings?.financialManagement || 0,
-    'Q15f: Other Processes (Maturity)': data.maturityRatings?.otherProcesses || 0,
+    'Q9 Short-Term Focus': data.shortTermFocus || '',
+    'Q12 Commercial Focus %': data.commercialFocus || 0,
+    'Q15: Client Acquisition and Relationship Management (Maturity)': data.maturityRatings?.clientAcquisition || 0,
+    'Q15: Quotation process (Maturity)': data.maturityRatings?.quotation || 0,
+    'Q15: Policy Administration and Management (Maturity)': data.maturityRatings?.policyAdmin || 0,
+    'Q15: Claims Management and Support (Maturity)': data.maturityRatings?.claimsManagement || 0,
+    'Q15: Financial Management (Maturity)': data.maturityRatings?.financialManagement || 0,
+    'Q15: All Other Processes (Maturity)': data.maturityRatings?.otherProcesses || 0,
+
+    ...binaryData,
 
     'Q17 Rank 1 Factor': rankedFactors[0] || '',
     'Q17 Rank 2 Factor': rankedFactors[1] || '',
@@ -290,17 +261,36 @@ export const submitSurvey = async (
 
     'Q20 Largest Insurer': data.selectedInsurer || '',
     'Q21 Service Influence': data.serviceInfluence || '',
-    'Q22 Product Differentiation': data.productDifferentiation || '',
-    'Q23 Relationship Management': data.relationshipManagement || '',
-    'Q25 Knowledge Rating': data.knowledgeRating || '',
+    'Q22 Product Classes': data.productClasses || '',
+    'Q23 Value Beyond Price': data.valueBeyondPrice || '',
+    'Q24 Claims Experience': data.claimsExperience || '',
+    'Q25 Knowledge Rating (Deep Dive)': data.knowledgeRating || '',
 
     'Q27 Barriers to Business': data.barriersToBusiness || '',
     'Q28 Succession Plan': data.successionPlan || '',
     'Q29 Growth Products': data.growthProducts || '',
     'Q30 AI Usage': data.aiUsage || 0,
-    'Q31 Communication Other': data.communicationOther || '',
-    'Q32 Support Needs Other': data.supportNeedsOther || '',
-    'Q33 Opt Out': data.optOut ? 'Yes' : 'No'
+
+    'DDR: Access Decision Makers': data.detailedRatings?.decisionMakers || '',
+    'DDR: Brand Reputation': data.detailedRatings?.brandReputation || '',
+    'DDR: Claims Handling': data.detailedRatings?.claimsHandling || '',
+    'DDR: Winning Business': data.detailedRatings?.winningBusiness || '',
+    'DDR: Insurer Appetite': data.detailedRatings?.insurerAppetite || '',
+    'DDR: Price Competitiveness': data.detailedRatings?.priceCompetitiveness || '',
+    'DDR: Regional Presence': data.detailedRatings?.regionalPresence || '',
+    'DDR: Responsiveness': data.detailedRatings?.responsiveness || '',
+    'DDR: Tech Innovation': data.detailedRatings?.techInnovation || '',
+    'DDR: Mid Term Timeliness': data.detailedRatings?.midTermAlterations || '',
+    'DDR: Renewal Timeliness': data.detailedRatings?.renewalTerms || '',
+    'DDR: Training & Support': data.detailedRatings?.trainingSupport || '',
+    'DDR: Brand Word 1': data.brandWords?.[0] || '',
+    'DDR: Brand Word 2': data.brandWords?.[1] || '',
+    'DDR: Brand Word 3': data.brandWords?.[2] || '',
+    'DDR: Service Improvement Select': data.serviceImprovement || '',
+
+    'Q33 Opt Out': data.optOut || false,
+    'Q34 Communication Other': data.communicationOther || '',
+    'Q34 Support Needs Other': data.supportNeedsOther || ''
   };
 
   try {
