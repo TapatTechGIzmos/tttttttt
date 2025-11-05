@@ -8,11 +8,11 @@ interface BusinessOperationsPageProps {
 }
 
 const lifePersonalProducts = [
-  'Term Life Cover (e.g., Botshelo Term Life Cover, Mothusi Term Shield, Digital Term - DT)',
-  'Whole of Life Cover (e.g., Botshelo Whole of Life, Mothusi Lifeline, Poelo Whole of Life)',
-  'Funeral Cover (e.g., Boikanyo, Mosako, Kgomotso, Digital Funeral - DF)',
-  'Credit Life cover (e.g., Mothusi Home Secure, Poelo Credit Life, Digital Credit Life - DCL)',
-  'Living benefits - Critical illness, disability cover',
+  'Term Life Cover (e.g.; Botshelo Term Life Cover; Mothusi Term Shield; Digital Term - DT)',
+  'Whole of Life Cover (e.g.; Botshelo Whole of Life; Mothusi Lifeline, Poelo Whole of Life)',
+  'Funeral Cover (e.g., Boikanyo; Mosako; Kgomotso; Digital Funeral - DF)',
+  'Credit Life cover (e.g.; Mothusi Home Secure; Poelo Credit Life; Digital Credit Life - DCL)',
+  'Living benefits - Critical illness; disability cover',
   'Retirement/Investment products',
 ];
 
