@@ -140,6 +140,22 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
   // New Array of Ranks (1 to 6) for iteration
   const ranks = [1, 2, 3, 4, 5, 6];
 
+  // Array for Question 21 ratings
+  const q21Ratings = [
+    { key: 'decisionMakers', label: 'Access to decision making underwriters' },
+    { key: 'brandReputation', label: 'Brand reputation' },
+    { key: 'claimsHandling', label: 'Claims handling' },
+    { key: 'winningBusiness', label: 'Helping you win new business' },
+    { key: 'insurerAppetite', label: 'Insurer appetite' },
+    { key: 'priceCompetitiveness', label: 'Price competitiveness' },
+    { key: 'regionalPresence', label: 'Regional presence' },
+    { key: 'responsiveness', label: 'Responsiveness and timeliness' },
+    { key: 'techInnovation', label: 'Technology innovation' },
+    { key: 'midTermAlterations', label: 'Timeliness of Mid Term alterations' },
+    { key: 'renewalTerms', label: 'Timeliness of Renewal terms' },
+    { key: 'trainingSupport', label: 'Training & Support' },
+  ];
+
   return (
     <div className="space-y-8">
       <h2 className="text-2xl font-bold text-gray-900">Insurer Evaluation</h2>
@@ -183,7 +199,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
                             // Factors already assigned a different rank (not 0, and not the current rank)
                             const alreadyRankedKeys = Object.keys(data.placementFactors).filter(
                                 key => data.placementFactors[key as keyof typeof data.placementFactors] !== 0 &&
-                                       data.placementFactors[key as keyof typeof data.placementFactors] !== rank
+                                             data.placementFactors[key as keyof typeof data.placementFactors] !== rank
                             );
 
                             // Filter the list of factors to only show:
@@ -408,23 +424,10 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
                   21. Please rate the following areas of this insurer:
                 </label>
                 <div className="space-y-4">
-                  {[
-                    { key: 'decisionMakers', label: 'Access to decision making underwriters' },
-                    { key: 'brandReputation', label: 'Brand reputation' },
-                    { key: 'claimsHandling', label: 'Claims handling' },
-                    { key: 'winningBusiness', label: 'Helping you win new business' },
-                    { key: 'insurerAppetite', label: 'Insurer appetite' },
-                    { key: 'priceCompetitiveness', label: 'Price competitiveness' },
-                    { key: 'regionalPresence', label: 'Regional presence' },
-                    { key: 'responsiveness', label: 'Responsiveness and timeliness' },
-                    { key: 'techInnovation', label: 'Technology innovation' },
-                    { key: 'midTermAlterations', label: 'Timeliness of Mid Term alterations' },
-                    { key: 'renewalTerms', label: 'Timeliness of Renewal terms' },
-                    { key: 'trainingSupport', label: 'Training & Support' },
-                  ].map((item) => (
+                  {q21Ratings.map((item, index) => ( // MODIFIED TO INCLUDE INDEX FOR 21a, 21b, etc.
                     <div key={item.key} className="bg-white p-4 rounded-lg">
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {item.label}
+                        {`21${String.fromCharCode(97 + index)}. ${item.label}`} {/* LABELLING HERE */}
                       </label>
                       <div className="flex flex-wrap gap-4">
                         {['Very Poor', 'Poor', 'Satisfactory', 'Good', 'Excellent', 'N/A'].map((rating) => (
@@ -477,7 +480,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                 22b. Please select the part of this insurer's service proposition you think most needs improvement:
+                  22b. Please select the part of this insurer's service proposition you think most needs improvement:
                 </label>
                 <select
                   value={data.serviceImprovement}
