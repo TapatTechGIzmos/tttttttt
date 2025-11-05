@@ -309,7 +309,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
                                     {percent}%
                                   </option>
                                 ))
-                              : [1, 2, 3, 4, 5].map((rating) => (
+                              : [5-excellent, 4-Good, 3-Satifactory, 2-Poor, 1-"Very Poor", 0-N/A].map((rating) => (
                                   <option key={rating} value={rating}>
                                     {rating}
                                   </option>
