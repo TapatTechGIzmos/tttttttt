@@ -453,7 +453,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-3">
-                  When considering the overall brand and reputation of this insurer, what specific words or phrases come to mind?
+                  22a. When considering the overall brand and reputation of this insurer, what specific words or phrases come to mind?
                 </label>
                 <div className="space-y-3">
                   {[0, 1].map((index) => (
@@ -477,7 +477,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  Please select the part of this insurer's service proposition you think most needs improvement:
+                 22b. Please select the part of this insurer's service proposition you think most needs improvement:
                 </label>
                 <select
                   value={data.serviceImprovement}
@@ -515,7 +515,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                21. Service - Describe why you gave this rating, how this insurer can improve, and how you would like the service experience to evolve
+                23. Service - Describe why you gave this rating, how this insurer can improve, and how you would like the service experience to evolve
               </label>
               <textarea
                 value={data.serviceDescription}
@@ -528,7 +528,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                22. Product: What differentiates this insurer from other insurance providers?
+                24. Product: What differentiates this insurer from other insurance providers?
               </label>
               <textarea
                 value={data.productDifferentiation}
@@ -541,7 +541,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-2">
-                23. Relationship Management - Describe your experience and what improvements would better serve your needs
+                25. Relationship Management - Describe your experience and what improvements would better serve your needs
               </label>
               <textarea
                 value={data.relationshipExperience}
@@ -554,7 +554,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
             <div>
               <label className="block text-sm font-medium text-gray-700 mb-3">
-                25. How would you rate the level of knowledge, education and resources provided by this insurer?
+                26. How would you rate the level of knowledge, education and resources provided by this insurer?
               </label>
               <div className="space-y-2">
                 {['Very Poor', 'Poor', 'Satisfactory', 'Good', 'Excellent'].map((option) => (
