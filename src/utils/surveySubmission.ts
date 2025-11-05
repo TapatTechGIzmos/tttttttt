@@ -23,14 +23,14 @@ const OPTIONS_Q8_SERVICES = [
   'Other Financial Advisory Services'
 ];
 
-const OPTIONS_Q10_SEGMENTS = [
+const OPTIONS_Q9_SEGMENTS = [
   'Mass market',
   'Middle market',
   'Affluent market',
   'We do not offer personal lines'
 ];
 
-const OPTIONS_Q11_CORP_SIZE = [
+const OPTIONS_Q10_CORP_SIZE = [
   'Micro Enterprise: <10 employees',
   'Small Enterprise: 10 to 49 employees',
   'Medium Enterprise: 50 to 99 employees',
@@ -184,12 +184,12 @@ export const submitSurvey = async (
     binaryData[`Q8: ${option} (Selected)`] = data.services?.includes(option) ? 1 : 0;
   });
 
-  OPTIONS_Q10_SEGMENTS.forEach(option => {
-    binaryData[`Q10: ${option} (Selected)`] = data.personalLinesSegment?.includes(option) ? 1 : 0;
+  OPTIONS_Q9_SEGMENTS.forEach(option => {
+    binaryData[`Q9: ${option} (Selected)`] = data.personalLinesSegment?.includes(option) ? 1 : 0;
   });
 
-  OPTIONS_Q11_CORP_SIZE.forEach(option => {
-    binaryData[`Q11: ${option} (Selected)`] = data.corporateClientSize?.includes(option) ? 1 : 0;
+  OPTIONS_Q10_CORP_SIZE.forEach(option => {
+    binaryData[`Q10: ${option} (Selected)`] = data.corporateClientSize?.includes(option) ? 1 : 0;
   });
 
   OPTIONS_Q13_PERSONAL.forEach(option => {
