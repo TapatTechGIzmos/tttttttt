@@ -1,6 +1,6 @@
 import { SurveyData } from '../types/surveyTypes';
 
-const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzF9QuPkmczwX22VQdS2WETYXo80e1Hk3O7IcbCYC6nJoEd69LwBQTZUx61_TJ_ra2_eQ/exec";
+const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbymG8pE9jFw9vzg9tJM46UPOTlO8K3OO462hc5nleAjQCV-Iq0rWJRAFLheW-smqr0ROg/exec";
 
 const Q6_OPTIONS = ['South East District', 'North East District', 'Southern District', 'Kweneng District', 'Kgatleng Distrct', 'Central District', 'Ghanzi District', 'Kgalagadi District', 'Ngamiland District', 'Chobe District'];
 const Q8_OPTIONS = ['Long term broker', 'Short term broker', 'Medical Aid broker', 'Other Financial Advisory Services'];
