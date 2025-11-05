@@ -200,7 +200,7 @@ export default function BotswanaLifeSurvey() {
 
 
   const handleSubmit = async () => {
-    const result = await submitSurvey(surveyData, setIsSubmitting);
+    const result = await submitSurvey(surveyData, setIsSubmitting, true);
 
     if (result.success) {
       localStorage.removeItem('botswanaLifeSurveyDraft');
