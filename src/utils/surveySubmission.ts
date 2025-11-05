@@ -260,10 +260,10 @@ export const submitSurvey = async (
     ...q19Data,
 
     'Q20 Largest Insurer': data.selectedInsurer || '',
-    'Q21 Service Influence': data.serviceInfluence || '',
-    'Q22 Product Classes': data.productClasses || '',
-    'Q23 Value Beyond Price': data.valueBeyondPrice || '',
-    'Q24 Claims Experience': data.claimsExperience || '',
+    'Q20a Service Influence': data.serviceInfluence || '',
+    'Q20b Product Classes': data.productClasses || '',
+    'Q20c Value Beyond Price': data.valueBeyondPrice || '',
+    'Q20d Claims Experience': data.claimsExperience || '',
     'Q25 Knowledge Rating (Deep Dive)': data.knowledgeRating || '',
 
     'Q27 Barriers to Business': data.barriersToBusiness || '',
