@@ -456,7 +456,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
                   When considering the overall brand and reputation of this insurer, what specific words or phrases come to mind?
                 </label>
                 <div className="space-y-3">
-                  {[0, 1, 2].map((index) => (
+                  {[0, 1].map((index) => (
                     <div key={index}>
                       <label className="block text-xs text-gray-600 mb-1">{index + 1})</label>
                       <input
