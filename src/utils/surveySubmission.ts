@@ -1,6 +1,7 @@
 import { SurveyData } from '../types/surveyTypes';
 
 const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbymG8pE9jFw9vzg9tJM46UPOTlO8K3OO462hc5nleAjQCV-Iq0rWJRAFLheW-smqr0ROg/exec";
+const GOOGLE_APPS_SCRIPT_URL_LIFE = "https://script.google.com/macros/s/AKfycby5TU8A96WeXk_6NnesMYG-fSUo0r-94zetBylmGN5ntRJ32ikPTkYhuiQVe6mC8h6iwQ/exec";
 
 const Q6_OPTIONS = ['South East District', 'North East District', 'Southern District', 'Kweneng District', 'Kgatleng Distrct', 'Central District', 'Ghanzi District', 'Kgalagadi District', 'Ngamiland District', 'Chobe District'];
 const Q8_OPTIONS = ['Long term broker', 'Short term broker', 'Medical Aid broker', 'Other Financial Advisory Services'];
@@ -138,7 +139,8 @@ interface SubmissionResult {
 
 export async function submitSurvey(
     surveyData: SurveyData,
-    setIsSubmitting: (isSubmitting: boolean) => void
+    setIsSubmitting: (isSubmitting: boolean) => void,
+    isLifeSurvey: boolean = false
 ): Promise<SubmissionResult> {
     if (!setIsSubmitting) {
         console.error("submitSurvey requires setIsSubmitting setter function.");
@@ -153,8 +155,9 @@ export async function submitSurvey(
 
     try {
         const dataRowToSubmit = mapSurveyDataForSubmission(surveyData);
+        const scriptUrl = isLifeSurvey ? GOOGLE_APPS_SCRIPT_URL_LIFE : GOOGLE_APPS_SCRIPT_URL;
 
-        const response = await fetch(GOOGLE_APPS_SCRIPT_URL, {
+        const response = await fetch(scriptUrl, {
             method: 'POST',
             body: JSON.stringify(dataRowToSubmit),
         });
