@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback, useEffect } from 'react';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
@@ -123,62 +123,61 @@ const pages = [
 export default function BotswanaLifeSurvey() {
   const navigate = useNavigate();
   const [currentPage, setCurrentPage] = useState(0);
-  const [surveyData, setSurveyData] = useState<SurveyData>(initialSurveyData);
+  const [surveyData, setSurveyData] = useState<SurveyData>(() => {
+    const savedData = localStorage.getItem('botswanaLifeSurveyDraft');
+    return savedData ? JSON.parse(savedData) : initialSurveyData;
+  });
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const CurrentPageComponent = pages[currentPage].component;
   const progress = Math.round(((currentPage + 1) / pages.length) * 100);
   const isLastPage = currentPage === pages.length - 1;
 
-  // === SAFE UPDATE FUNCTION (FIXED!) ===
-  const updateSurveyData = (data: Partial<SurveyData>) => {
+  // === SAFE UPDATE FUNCTION WITH AUTO-SAVE ===
+  const updateSurveyData = useCallback((data: Partial<SurveyData>) => {
     setSurveyData(prev => {
-      // Handle nested maturityRatings safely
+      let updatedData: SurveyData;
+
       if (data.maturityRatings) {
-        return {
+        updatedData = {
           ...prev,
           maturityRatings: {
             ...(prev.maturityRatings ?? {}),
             ...data.maturityRatings,
           },
         };
-      }
-
-      // Handle other nested objects if needed in the future
-      if (data.placementFactors) {
-        return {
+      } else if (data.placementFactors) {
+        updatedData = {
           ...prev,
           placementFactors: {
             ...(prev.placementFactors ?? {}),
             ...data.placementFactors,
           },
         };
-      }
-
-      if (data.insurerRatings) {
-        return {
+      } else if (data.insurerRatings) {
+        updatedData = {
           ...prev,
           insurerRatings: {
             ...(prev.insurerRatings ?? {}),
             ...data.insurerRatings,
           },
         };
-      }
-
-      if (data.detailedRatings) {
-        return {
+      } else if (data.detailedRatings) {
+        updatedData = {
           ...prev,
           detailedRatings: {
             ...(prev.detailedRatings ?? {}),
             ...data.detailedRatings,
           },
         };
+      } else {
+        updatedData = { ...prev, ...data };
       }
 
-      // Default: shallow merge
-      return { ...prev, ...data };
+      localStorage.setItem('botswanaLifeSurveyDraft', JSON.stringify(updatedData));
+      return updatedData;
     });
-  };
+  }, []);
 
   const handleNext = () => {
     if (currentPage < pages.length - 1) {
@@ -204,6 +203,7 @@ export default function BotswanaLifeSurvey() {
     const result = await submitSurvey(surveyData, setIsSubmitting);
 
     if (result.success) {
+      localStorage.removeItem('botswanaLifeSurveyDraft');
       alert(result.message);
       navigate('/broker-survey');
     } else {
