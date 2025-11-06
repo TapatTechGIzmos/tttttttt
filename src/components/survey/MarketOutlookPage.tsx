@@ -123,13 +123,15 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            29. With which of the following new Life Insurers have you placed business or plan to place business in the next 12 months? (Select all that apply)
+            29. With which of the following new Short-Term Insurers have you placed business or plan to place business in the next 12 months? (Select all that apply)
           </label>
           <div className="space-y-2">
             {[
-              'Afritec Life Insurance',
-              'Exclusive Life Insurance',
-              'Westlife Insurance Botswana',
+              'Active Drive Capital',
+              'Insure Guard',
+              'Legalwise Botswana',
+              'Lords Insurance',
+              'Westsure Insurance',
               'Have not engaged and plan not to in the next 12 months',
             ].map((option) => (
               <label key={option} className="flex items-center">

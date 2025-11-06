@@ -9,15 +9,20 @@ interface InsurerEvaluationPageProps {
 
 export default function InsurerEvaluationPage({ data, updateData, insurers: customInsurers }: InsurerEvaluationPageProps) {
   const defaultInsurers = [
-    'Bryte Risk Services',
-    'Botswana Insurance Company',
-    'Hollard Insurance Company',
-    'Liberty General Botswana',
+    'Active Drive Capital',
+    'Alpha Direct Insurance',
+    'Botswana Insurance Company (BIC)',
+    'Bryte Risk Service',
+    'Export Credit Insurance & Guarantee Company',
+    'Hollard Insurance',
+    'Insure Guard',
+    'Legalwise Botswana',
+    'Lords Insurance',
     'Old Mutual Short-Term Insurance',
-    'Phoenix of Botswana Assurance',
-    'Sesiro Insurance Company',
-    'Sunshine Insurance Company',
-    'Western Insurance Botswana',
+    'Phoenix Assurance',
+    'Sesiro Insurance',
+    'Sunshine Insurance',
+    'Westsure Insurance',
   ];
 
   const insurers = customInsurers || defaultInsurers;
