@@ -81,7 +81,8 @@ export interface SurveyData {
   knowledgeRating: string;
   biggestConcerns: string[];
   barriersToBusiness: string;
-  successionPlan: string;
+  newLifeInsurers: string[];
+  newEntrantCriteria: string[];
   growthProducts: string;
   aiUsage: number;
   communicationPreferences: string[];

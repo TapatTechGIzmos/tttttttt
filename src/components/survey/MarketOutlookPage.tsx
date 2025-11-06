@@ -62,6 +62,22 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
     updateData({ supportNeeds: newSupport });
   };
 
+  const handleNewLifeInsurerChange = (insurer: string) => {
+    const newInsurers = data.newLifeInsurers?.includes(insurer)
+      ? data.newLifeInsurers.filter((i) => i !== insurer)
+      : [...(data.newLifeInsurers || []), insurer];
+    updateData({ newLifeInsurers: newInsurers });
+  };
+
+  const handleNewEntrantCriteriaChange = (criteria: string) => {
+    const newCriteria = data.newEntrantCriteria?.includes(criteria)
+      ? data.newEntrantCriteria.filter((c) => c !== criteria)
+      : data.newEntrantCriteria?.length >= 3
+      ? data.newEntrantCriteria
+      : [...(data.newEntrantCriteria || []), criteria];
+    updateData({ newEntrantCriteria: newCriteria });
+  };
+
   return (
     <div className="space-y-8">
       <h2 className="text-2xl font-bold text-gray-900">Market Outlook and Support Needs</h2>
@@ -111,22 +127,54 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
           </label>
           <div className="space-y-2">
             {[
-              'Afritec Life',
-              'Exclusive Life',
-              'No, we currently do not have a succession plan',
-              'I am not sure',
-              'Prefer not to answer',
+              'Afritec Life Insurance',
+              'Exclusive Life Insurance',
+              'Westlife Insurance Botswana',
+              'Have not engaged and plan not to in the next 12 months',
             ].map((option) => (
               <label key={option} className="flex items-center">
                 <input
-                  type="radio"
-                  name="successionPlan"
-                  value={option}
-                  checked={data.successionPlan === option}
-                  onChange={(e) => updateData({ successionPlan: e.target.value })}
-                  className="w-4 h-4 text-blue-600 focus:ring-blue-500"
+                  type="checkbox"
+                  checked={data.newLifeInsurers?.includes(option) || false}
+                  onChange={() => handleNewLifeInsurerChange(option)}
+                  className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500"
                 />
                 <span className="ml-3 text-gray-700">{option}</span>
+              </label>
+            ))}
+          </div>
+        </div>
+
+        <div>
+          <div className="flex items-center justify-between mb-3">
+            <label className="block text-sm font-medium text-gray-700">
+              29a. For a new market entrant, to win new business from your brokerage, which THREE resources, services, or commitments are most critical to offer? (Please select up to 3)
+            </label>
+            <span className="text-xs text-blue-600 font-medium">
+              Selected: {data.newEntrantCriteria?.length || 0} of 3
+            </span>
+          </div>
+          <div className="space-y-2">
+            {[
+              'Direct access to senior and empowered underwriters with local mandates',
+              'Superior and fixed binder fees are designed to offset the risk of switching capacity.',
+              'Quick claims settlement (straightforward, simplified process (e.g., 48-hour assessment).',
+              'Agile digital tools that integrate with our existing systems (e.g., real-time quoting API, faster MTA processing).',
+              'Specialised risk expertise for emerging sectors',
+              'Joint marketing funds and resources to help us win business from their target segment.',
+              'Highly rated reinsurance backing and proven local capitalisation to ensure long-term stability.',
+              'Continuous product training',
+              'Other',
+            ].map((option) => (
+              <label key={option} className="flex items-center">
+                <input
+                  type="checkbox"
+                  checked={data.newEntrantCriteria?.includes(option) || false}
+                  onChange={() => handleNewEntrantCriteriaChange(option)}
+                  disabled={!data.newEntrantCriteria?.includes(option) && (data.newEntrantCriteria?.length || 0) >= 3}
+                  className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                />
+                <span className={`ml-3 ${!data.newEntrantCriteria?.includes(option) && (data.newEntrantCriteria?.length || 0) >= 3 ? 'text-gray-400' : 'text-gray-700'}`}>{option}</span>
               </label>
             ))}
           </div>
@@ -211,7 +259,7 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
         <div>
           <div className="flex items-center justify-between mb-3">
             <label className="block text-sm font-medium text-gray-700">
-              33. What types of support from insurers would help you attract new clients? (Select all that apply)
+              34. What types of support from insurers would help you attract new clients? (Select all that apply)
             </label>
             <span className="text-xs text-blue-600 font-medium">
               Selected: {data.supportNeeds.length} of {supportNeeds.length}
@@ -250,7 +298,7 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
               className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 mt-1"
             />
             <span className="ml-3 text-sm text-gray-700">
-              <strong>34. Future correspondence:</strong> I wish to opt out of any follow-up correspondence regarding the Long-term Insurance 2025/26 survey, and I acknowledge that this is inclusive of not being sent the executive summary report and being included in the prize draw.
+              <strong>35. Future correspondence:</strong> I wish to opt out of any follow-up correspondence regarding the Long-term Insurance 2025/26 survey, and I acknowledge that this is inclusive of not being sent the executive summary report and being included in the prize draw.
             </span>
           </label>
         </div>
