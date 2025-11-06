@@ -107,12 +107,12 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            29. Does your brokerage have a succession plan for leadership or ownership transitions due to retirement or unexpected vacancies?
+            29. With which of the following new Life Insurers have you placed business or plan to place business in the next 12 months? (Select all that apply)
           </label>
           <div className="space-y-2">
             {[
-              'Yes, we have a formal, documented plan',
-              'We have an informal or unwritten plan',
+              'Afritec Life',
+              'Exclusive Life',
               'No, we currently do not have a succession plan',
               'I am not sure',
               'Prefer not to answer',
