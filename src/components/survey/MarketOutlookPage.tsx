@@ -125,7 +125,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType }: Mark
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            29. With which of the following new {isLifeSurvey ? 'Life' : 'Short-Term'} Insurers have you placed business or plan to place business in the next 12 months? (Select all that apply)
+            29a. With which of the following new {isLifeSurvey ? 'Life' : 'Short-Term'} Insurers have you placed business or plan to place business in the next 12 months? (Select all that apply)
           </label>
           <div className="space-y-2">
             {(isLifeSurvey ? [
@@ -157,7 +157,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType }: Mark
         <div>
           <div className="flex items-center justify-between mb-3">
             <label className="block text-sm font-medium text-gray-700">
-              29a. For a new market entrant, to win new business from your brokerage, which THREE resources, services, or commitments are most critical to offer? (Please select up to 3)
+              29b. For a new market entrant, to win new business from your brokerage, which THREE resources, services, or commitments are most critical to offer? (Please select up to 3)
             </label>
             <span className="text-xs text-blue-600 font-medium">
               Selected: {data.newEntrantCriteria?.length || 0} of 3
@@ -268,7 +268,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType }: Mark
         <div>
           <div className="flex items-center justify-between mb-3">
             <label className="block text-sm font-medium text-gray-700">
-              34. What types of support from insurers would help you attract new clients? (Select all that apply)
+              33. What types of support from insurers would help you attract new clients? (Select all that apply)
             </label>
             <span className="text-xs text-blue-600 font-medium">
               Selected: {data.supportNeeds.length} of {supportNeeds.length}
@@ -307,7 +307,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType }: Mark
               className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 mt-1"
             />
             <span className="ml-3 text-sm text-gray-700">
-              <strong>35. Future correspondence:</strong> I wish to opt out of any follow-up correspondence regarding the Long-term Insurance 2025/26 survey, and I acknowledge that this is inclusive of not being sent the executive summary report and being included in the prize draw.
+              <strong>34. Future correspondence:</strong> I wish to opt out of any follow-up correspondence regarding the Long-term Insurance 2025/26 survey, and I acknowledge that this is inclusive of not being sent the executive summary report and being included in the prize draw.
             </span>
           </label>
         </div>
