@@ -7,6 +7,21 @@ interface MarketOutlookPageProps {
   surveyType?: string;
 }
 
+const formatCriteriaLabel = (option: string) => {
+  const match = option.match(/^([^(]+)(\(.*\))?[.]?$/);
+  if (match) {
+    const title = match[1].trim();
+    const description = match[2] ? match[2].trim() : '';
+    return (
+      <span>
+        <span className="font-bold">{title}</span>
+        {description && <span className="italic text-xs ml-1">{description}</span>}
+      </span>
+    );
+  }
+  return <span className="font-bold">{option}</span>;
+};
+
 export default function MarketOutlookPage({ data, updateData, surveyType }: MarketOutlookPageProps) {
   const isLifeSurvey = surveyType === 'life';
   const concerns = [
@@ -183,7 +198,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType }: Mark
                   disabled={!data.newEntrantCriteria?.includes(option) && (data.newEntrantCriteria?.length || 0) >= 3}
                   className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
                 />
-                <span className={`ml-3 ${!data.newEntrantCriteria?.includes(option) && (data.newEntrantCriteria?.length || 0) >= 3 ? 'text-gray-400' : 'text-gray-700'}`}>{option}</span>
+                <span className={`ml-3 ${!data.newEntrantCriteria?.includes(option) && (data.newEntrantCriteria?.length || 0) >= 3 ? 'text-gray-400' : 'text-gray-700'}`}>{formatCriteriaLabel(option)}</span>
               </label>
             ))}
           </div>

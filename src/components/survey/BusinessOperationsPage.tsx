@@ -82,6 +82,21 @@ const maturityAreas = [
   { key: 'otherProcesses', label: '15f. All Other Processes' },
 ];
 
+const formatProductLabel = (product: string) => {
+  const match = product.match(/^([^(]+)(\(.*\))?$/);
+  if (match) {
+    const title = match[1].trim();
+    const description = match[2] ? match[2].trim() : '';
+    return (
+      <span>
+        <span className="font-bold">{title}</span>
+        {description && <span className="italic text-xs ml-1">{description}</span>}
+      </span>
+    );
+  }
+  return <span className="font-bold">{product}</span>;
+};
+
 export default function BusinessOperationsPage({ data, updateData, surveyType = 'short-term' }: BusinessOperationsPageProps) {
   // === LOCAL STATE ===
   const [commercialFocus, setCommercialFocus] = useState<number>(data.commercialFocus ?? 0);
@@ -309,7 +324,7 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
                       className="w-4 h-4 text-blue-600 focus:ring-blue-500 mt-1 disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                     <span className={`text-sm ${!localTopProductsPersonal.includes(product) && localTopProductsPersonal.length >= 5 ? 'text-gray-400' : 'text-gray-700'}`}>
-                      {product}
+                      {formatProductLabel(product)}
                     </span>
                   </label>
                 ))}
@@ -338,7 +353,7 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
                       className="w-4 h-4 text-blue-600 focus:ring-blue-500 mt-1 disabled:opacity-50 disabled:cursor-not-allowed"
                     />
                     <span className={`text-sm ${!localTopProductsCommercial.includes(product) && localTopProductsCommercial.length >= 5 ? 'text-gray-400' : 'text-gray-700'}`}>
-                      {product}
+                      {formatProductLabel(product)}
                     </span>
                   </label>
                 ))}
