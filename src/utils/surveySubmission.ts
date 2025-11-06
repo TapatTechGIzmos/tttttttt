@@ -1,6 +1,6 @@
 import { SurveyData } from '../types/surveyTypes';
 
-const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbymG8pE9jFw9vzg9tJM46UPOTlO8K3OO462hc5nleAjQCV-Iq0rWJRAFLheW-smqr0ROg/exec";
+const GOOGLE_APPS_SCRIPT_URL = "https://script.google.com/macros/s/AKfycbzfSHW4zaRjlewYo8QBjPBu4rwW0NeyX_0m3fi_0sWhNPXIqM1HyR6IajSKCxy5Gedk/exec";
 const GOOGLE_APPS_SCRIPT_URL_LIFE = "https://script.google.com/macros/s/AKfycby5TU8A96WeXk_6NnesMYG-fSUo0r-94zetBylmGN5ntRJ32ikPTkYhuiQVe6mC8h6iwQ/exec";
 
 // --- OPTIONS DEFINITION (Updated for Life Survey Products and New Qs) ---
