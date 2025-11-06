@@ -4,9 +4,11 @@ import { SurveyData } from '../../pages/BotswanaSurvey';
 interface MarketOutlookPageProps {
   data: SurveyData;
   updateData: (data: Partial<SurveyData>) => void;
+  surveyType?: string;
 }
 
-export default function MarketOutlookPage({ data, updateData }: MarketOutlookPageProps) {
+export default function MarketOutlookPage({ data, updateData, surveyType }: MarketOutlookPageProps) {
+  const isLifeSurvey = surveyType === 'life';
   const concerns = [
     'Technological Disruption and Adoption',
     'Changing Client Expectations',
@@ -123,17 +125,22 @@ export default function MarketOutlookPage({ data, updateData }: MarketOutlookPag
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            29. With which of the following new Short-Term Insurers have you placed business or plan to place business in the next 12 months? (Select all that apply)
+            29. With which of the following new {isLifeSurvey ? 'Life' : 'Short-Term'} Insurers have you placed business or plan to place business in the next 12 months? (Select all that apply)
           </label>
           <div className="space-y-2">
-            {[
+            {(isLifeSurvey ? [
+              'Afritec Life Insurance',
+              'Exclusive Life Insurance',
+              'Westlife Insurance Botswana',
+              'Have not engaged and plan not to in the next 12 months',
+            ] : [
               'Active Drive Capital',
               'Insure Guard',
               'Legalwise Botswana',
               'Lords Insurance',
               'Westsure Insurance',
               'Have not engaged and plan not to in the next 12 months',
-            ].map((option) => (
+            ]).map((option) => (
               <label key={option} className="flex items-center">
                 <input
                   type="checkbox"

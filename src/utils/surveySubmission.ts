@@ -13,7 +13,8 @@ const Q13_OPTIONS = ['Buy hot leads list', 'Existing client referral', 'Leverage
 const Q14_OPTIONS = ['Quoting and comparing products', 'Submitting applications', 'Managing renewals', 'Processing MTAs', 'Communicating with clients', 'Claims handling', 'None of the above'];
 const Q16_OPTIONS = ['To save time', 'To improve customer experience', 'To reduce admin workload', 'To remain competitive', 'To lower operational costs', 'I wouldn\'t use more digital tools'];
 const Q27_OPTIONS = ['Technological Disruption and Adoption', 'Changing Client Expectations', 'Cybersecurity Risks', 'Regulatory and Compliance Pressures', 'Climate Change and Sustainability', 'Talent Shortages and Succession Planning', 'Economic Uncertainty and Market Volatility', 'Competition from Insurtech and Direct-to-Consumer Models', 'Data Management and Analytics', 'Rising Operational Costs'];
-const Q29_OPTIONS = ['Active Drive Capital', 'Insure Guard', 'Legalwise Botswana', 'Lords Insurance', 'Westsure Insurance', 'Have not engaged and plan not to in the next 12 months'];
+const Q29_OPTIONS_SHORT_TERM = ['Active Drive Capital', 'Insure Guard', 'Legalwise Botswana', 'Lords Insurance', 'Westsure Insurance', 'Have not engaged and plan not to in the next 12 months'];
+const Q29_OPTIONS_LIFE = ['Afritec Life Insurance', 'Exclusive Life Insurance', 'Westlife Insurance Botswana', 'Have not engaged and plan not to in the next 12 months'];
 const Q29a_OPTIONS = ['Direct access to senior and empowered underwriters with local mandates', 'Superior and fixed binder fees are designed to offset the risk of switching capacity.', 'Quick claims settlement (straightforward, simplified process (e.g., 48-hour assessment).', 'Agile digital tools that integrate with our existing systems (e.g., real-time quoting API, faster MTA processing).', 'Specialised risk expertise for emerging sectors', 'Joint marketing funds and resources to help us win business from their target segment.', 'Highly rated reinsurance backing and proven local capitalisation to ensure long-term stability.', 'Continuous product training', 'Other'];
 const Q32_OPTIONS = ['Business planning session', 'Strategic planning workshops', 'Training events', 'Broker road shows', 'Regular meetings with broker consultant', 'Other (please specify)'];
 const Q33_OPTIONS = ['Product training', 'Enhanced customer service', 'Faster underwriting', 'Increased Insurance marketing', 'Market insights on end-customer segments', 'Selling skills training', 'Other (please specify)'];
@@ -28,7 +29,7 @@ const mapToBinary = (selectedItems: string[] | undefined, allPossibleOptions: st
     return allPossibleOptions.map(option => selectedSet.has(option) ? 1 : 0);
 };
 
-export function mapSurveyDataForSubmission(data: SurveyData): (string | number)[] {
+export function mapSurveyDataForSubmission(data: SurveyData, isLifeSurvey: boolean = false): (string | number)[] {
     const submissionArray: (string | number)[] = [];
 
     submissionArray.push(
@@ -120,7 +121,8 @@ export function mapSurveyDataForSubmission(data: SurveyData): (string | number)[
         data.barriersToBusiness || ""
     );
 
-    submissionArray.push(...mapToBinary(data.newLifeInsurers, Q29_OPTIONS));
+    const q29Options = isLifeSurvey ? Q29_OPTIONS_LIFE : Q29_OPTIONS_SHORT_TERM;
+    submissionArray.push(...mapToBinary(data.newLifeInsurers, q29Options));
     submissionArray.push(...mapToBinary(data.newEntrantCriteria, Q29a_OPTIONS));
 
     submissionArray.push(
@@ -161,7 +163,7 @@ export async function submitSurvey(
     };
 
     try {
-        const dataRowToSubmit = mapSurveyDataForSubmission(surveyData);
+        const dataRowToSubmit = mapSurveyDataForSubmission(surveyData, isLifeSurvey);
         const scriptUrl = isLifeSurvey ? GOOGLE_APPS_SCRIPT_URL_LIFE : GOOGLE_APPS_SCRIPT_URL;
 
         const response = await fetch(scriptUrl, {
