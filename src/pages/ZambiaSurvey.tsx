@@ -98,6 +98,33 @@ const initialSurveyData: SurveyData = {
   optOut: false,
 };
 
+const generalInsurers = [
+  'Africa Pride',
+  'Golden Lotus',
+  'Hollard',
+  'Madison',
+  'Mayfair',
+  'Phoenix',
+  'Swan',
+  'ZSIC',
+  'Adelvis',
+  'Advantage Insurance',
+  'African Grey',
+  'A Plus',
+  'Discover Insurance',
+  'General Alliance',
+  'Goldman',
+  'Indigo',
+  'Innovate',
+  'Klapton',
+  'Lion',
+  'Meanwood',
+  'Nico',
+  'Professional Insurance',
+  'Savenda',
+  'Veritas',
+];
+
 const pages = [
   { component: WelcomePage, title: 'Welcome' },
   { component: ProfilePage, title: 'Profile and Demographic Information' },
@@ -229,6 +256,7 @@ export default function ZambiaSurvey() {
               updateData={updateSurveyData}
               surveyType="short-term"
               country="Zambia"
+              {...(currentPage === 4 ? { insurers: generalInsurers } : {})}
             />
           </div>
 

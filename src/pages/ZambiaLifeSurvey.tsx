@@ -97,16 +97,15 @@ const initialSurveyData: SurveyData = {
 };
 
 const lifeInsurers = [
-  'Absa Life Botswana',
-  'Afritec Life Insurance',
-  'Bona Life Insurance',
-  'Botswana Life Insurance Limited',
-  'Exclusive Life Insurance',
-  'Hollard Life Assurance Company of Botswana',
-  'Liberty Life Botswana',
-  'Metropolitan Life of Botswana Limited',
-  'Old Mutual Life Insurance Company (Botswana)',
-  'Westlife Insurance Botswana',
+  'Best Life',
+  'Hollard Life',
+  'Liberty Life',
+  'Madison Life',
+  'One Life',
+  'Prudential Life',
+  'Sanlam Life Zambia',
+  'Speciality Emergency Services',
+  'ZSIC Life',
 ];
 
 const pages = [

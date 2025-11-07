@@ -26,6 +26,7 @@ const Q27_OPTIONS = ['Technological Disruption and Adoption', 'Changing Client E
 
 const Q29a_OPTIONS_SHORT_TERM = ['Active Drive Capital', 'Insure Guard', 'Legalwise Botswana', 'Lords Insurance', 'Westsure Insurance', 'Have not engaged and plan not to in the next 12 months'];
 const Q29a_OPTIONS_LIFE = ['Afritec Life Insurance', 'Exclusive Life Insurance', 'Westlife Insurance Botswana', 'Have not engaged and plan not to in the next 12 months'];
+const Q29a_OPTIONS_ZAMBIA = ['Have not engaged and plan not to in the next 12 months'];
 
 const Q29b_OPTIONS = ['Direct access to senior and empowered underwriters with local mandates', 'Superior and fixed binder fees are designed to offset the risk of switching capacity.', 'Quick claims settlement (straightforward, simplified process (e.g., 48-hour assessment).', 'Agile digital tools that integrate with our existing systems (e.g., real-time quoting API, faster MTA processing).', 'Specialised risk expertise for emerging sectors', 'Joint marketing funds and resources to help us win business from their target segment.', 'Highly rated reinsurance backing and proven local capitalisation to ensure long-term stability.', 'Continuous product training', 'Other'];
 
@@ -142,7 +143,7 @@ export function mapSurveyDataForSubmission(data: SurveyData, isLifeSurvey: boole
     submissionArray.push(data.barriersToBusiness || "");
 
     // --- Q29a (New Insurer Placement) ---
-    const q29aOptions = isLifeSurvey ? Q29a_OPTIONS_LIFE : Q29a_OPTIONS_SHORT_TERM;
+    const q29aOptions = country === "Zambia" ? Q29a_OPTIONS_ZAMBIA : (isLifeSurvey ? Q29a_OPTIONS_LIFE : Q29a_OPTIONS_SHORT_TERM);
     submissionArray.push(...mapToBinary(data.newLifeInsurers, q29aOptions));
     
     // --- Q29b (New Entrant Criteria - Winning Formula) ---

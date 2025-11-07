@@ -5,6 +5,7 @@ interface MarketOutlookPageProps {
   data: SurveyData;
   updateData: (data: Partial<SurveyData>) => void;
   surveyType?: string;
+  country?: string;
 }
 
 const formatCriteriaLabel = (option: string) => {
@@ -22,8 +23,9 @@ const formatCriteriaLabel = (option: string) => {
   return <span className="font-bold">{option}</span>;
 };
 
-export default function MarketOutlookPage({ data, updateData, surveyType }: MarketOutlookPageProps) {
+export default function MarketOutlookPage({ data, updateData, surveyType, country = 'Botswana' }: MarketOutlookPageProps) {
   const isLifeSurvey = surveyType === 'life';
+  const isZambia = country === 'Zambia';
   const concerns = [
     'Technological Disruption and Adoption',
     'Changing Client Expectations',
@@ -143,7 +145,9 @@ export default function MarketOutlookPage({ data, updateData, surveyType }: Mark
             29a. With which of the following new {isLifeSurvey ? 'Life' : 'Short-Term'} Insurers have you placed business or plan to place business in the next 12 months? (Select all that apply)
           </label>
           <div className="space-y-2">
-            {(isLifeSurvey ? [
+            {(isZambia ? [
+              'Have not engaged and plan not to in the next 12 months',
+            ] : isLifeSurvey ? [
               'Afritec Life Insurance',
               'Exclusive Life Insurance',
               'Westlife Insurance Botswana',
