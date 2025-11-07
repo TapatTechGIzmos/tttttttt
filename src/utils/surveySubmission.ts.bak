@@ -173,7 +173,7 @@ interface SubmissionResult {
 export async function submitSurvey(
     surveyData: SurveyData,
     setIsSubmitting: (isSubmitting: boolean) => void,
-    surveyType: boolean | string = false
+    isLifeSurvey: boolean = false
 ): Promise<SubmissionResult> {
     if (!setIsSubmitting) {
         console.error("submitSurvey requires setIsSubmitting setter function.");
@@ -187,17 +187,8 @@ export async function submitSurvey(
     };
 
     try {
-        const isLifeSurvey = surveyType === true || surveyType === 'zambia-life';
-        const dataRowToSubmit = mapSurveyDataForSubmission(surveyData, isLifeSurvey);
-
-        let scriptUrl = GOOGLE_APPS_SCRIPT_URL;
-        if (surveyType === 'zambia') {
-            scriptUrl = GOOGLE_APPS_SCRIPT_URL_ZAMBIA || GOOGLE_APPS_SCRIPT_URL;
-        } else if (surveyType === 'zambia-life') {
-            scriptUrl = GOOGLE_APPS_SCRIPT_URL_ZAMBIA_LIFE || GOOGLE_APPS_SCRIPT_URL_LIFE;
-        } else if (surveyType === true || isLifeSurvey) {
-            scriptUrl = GOOGLE_APPS_SCRIPT_URL_LIFE;
-        }
+        const dataRowToSubmit = mapSurveyDataForSubmission(surveyData, isLifeSurvey);
+        const scriptUrl = isLifeSurvey ? GOOGLE_APPS_SCRIPT_URL_LIFE : GOOGLE_APPS_SCRIPT_URL;
 
         const response = await fetch(scriptUrl, {
             method: 'POST',

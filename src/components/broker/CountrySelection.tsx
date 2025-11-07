@@ -28,6 +28,10 @@ export default function CountrySelection() {
       navigate('/broker-survey/botswana-short-term');
     } else if (country === 'Botswana' && type === 'life') {
       navigate('/broker-survey/botswana-life');
+    } else if (country === 'Zambia' && type === 'non-life') {
+      navigate('/broker-survey/zambia-short-term');
+    } else if (country === 'Zambia' && type === 'life') {
+      navigate('/broker-survey/zambia-life');
     } else {
       alert(`Survey for ${country} ${type === 'life' ? 'Life' : 'Short-Term'} Insurance coming soon!`);
     }
