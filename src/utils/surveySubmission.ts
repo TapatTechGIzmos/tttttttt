@@ -6,7 +6,9 @@ const GOOGLE_APPS_SCRIPT_URL_ZAMBIA = "";
 const GOOGLE_APPS_SCRIPT_URL_ZAMBIA_LIFE = "";
 
 // --- OPTIONS DEFINITION (Updated for Life Survey Products and New Qs) ---
-const Q6_OPTIONS = ['South East District', 'North East District', 'Southern District', 'Kweneng District', 'Kgatleng Distrct', 'Central District', 'Ghanzi District', 'Kgalagadi District', 'Ngamiland District', 'Chobe District'];
+const Q6_OPTIONS_BOTSWANA = ['South East District', 'North East District', 'Southern District', 'Kweneng District', 'Kgatleng Distrct', 'Central District', 'Ghanzi District', 'Kgalagadi District', 'Ngamiland District', 'Chobe District'];
+const Q6_OPTIONS_ZAMBIA = ['Central', 'Copperbelt', 'Eastern', 'Luapula', 'Lusaka', 'Muchinga', 'Northern', 'North Western', 'Southern', 'Western'];
+const Q6_OPTIONS = Q6_OPTIONS_BOTSWANA;
 const Q8_OPTIONS = ['Long term broker', 'Short term broker', 'Medical Aid broker', 'Other Financial Advisory Services'];
 const Q9_OPTIONS = ['Mass market', 'Middle market', 'Affluent market', 'We do not offer personal lines'];
 const Q10_OPTIONS = ['Micro Enterprise: <10 employees', 'Small Enterprise: 10 to 49 employees', 'Medium Enterprise: 50 to 99 employees', 'Commercial Enterprise: 100 to 299 employees', 'Large Corporate Enterprise: 300 plus employees'];
@@ -41,13 +43,13 @@ const mapToBinary = (selectedItems: string[] | undefined, allPossibleOptions: st
     return allPossibleOptions.map(option => selectedSet.has(option) ? 1 : 0);
 };
 
-export function mapSurveyDataForSubmission(data: SurveyData, isLifeSurvey: boolean = false): (string | number)[] {
+export function mapSurveyDataForSubmission(data: SurveyData, isLifeSurvey: boolean = false, country: string = "Botswana"): (string | number)[] {
     const submissionArray: (string | number)[] = [];
 
     // --- ADMINISTRATIVE FIELDS (Q0) ---
     submissionArray.push(
         new Date().toISOString(),
-        "Botswana",
+        country,
         "Web Survey App"
     );
 
@@ -63,7 +65,7 @@ export function mapSurveyDataForSubmission(data: SurveyData, isLifeSurvey: boole
         data.ageGroup || ""
     );
 
-    submissionArray.push(...mapToBinary(data.districts, Q6_OPTIONS));
+    submissionArray.push(...mapToBinary(data.districts, country === "Zambia" ? Q6_OPTIONS_ZAMBIA : Q6_OPTIONS_BOTSWANA));
     submissionArray.push(data.brokerageSize || "");
     submissionArray.push(...mapToBinary(data.services, Q8_OPTIONS));
     submissionArray.push(...mapToBinary(data.personalLinesSegment, Q9_OPTIONS));
@@ -173,7 +175,7 @@ interface SubmissionResult {
 export async function submitSurvey(
     surveyData: SurveyData,
     setIsSubmitting: (isSubmitting: boolean) => void,
-    surveyType: boolean | string = false
+    isLifeSurvey: boolean = false
 ): Promise<SubmissionResult> {
     if (!setIsSubmitting) {
         console.error("submitSurvey requires setIsSubmitting setter function.");
@@ -187,17 +189,8 @@ export async function submitSurvey(
     };
 
     try {
-        const isLifeSurvey = surveyType === true || surveyType === 'zambia-life';
-        const dataRowToSubmit = mapSurveyDataForSubmission(surveyData, isLifeSurvey);
-
-        let scriptUrl = GOOGLE_APPS_SCRIPT_URL;
-        if (surveyType === 'zambia') {
-            scriptUrl = GOOGLE_APPS_SCRIPT_URL_ZAMBIA || GOOGLE_APPS_SCRIPT_URL;
-        } else if (surveyType === 'zambia-life') {
-            scriptUrl = GOOGLE_APPS_SCRIPT_URL_ZAMBIA_LIFE || GOOGLE_APPS_SCRIPT_URL_LIFE;
-        } else if (surveyType === true || isLifeSurvey) {
-            scriptUrl = GOOGLE_APPS_SCRIPT_URL_LIFE;
-        }
+        const dataRowToSubmit = mapSurveyDataForSubmission(surveyData, isLifeSurvey);
+        const scriptUrl = isLifeSurvey ? GOOGLE_APPS_SCRIPT_URL_LIFE : GOOGLE_APPS_SCRIPT_URL;
 
         const response = await fetch(scriptUrl, {
             method: 'POST',

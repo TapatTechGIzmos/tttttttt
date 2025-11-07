@@ -228,6 +228,7 @@ export default function ZambiaSurvey() {
               data={surveyData}
               updateData={updateSurveyData}
               surveyType="short-term"
+              country="Zambia"
             />
           </div>
 

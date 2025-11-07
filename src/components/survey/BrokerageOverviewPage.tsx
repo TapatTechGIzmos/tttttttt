@@ -4,10 +4,11 @@ import { SurveyData } from '../../pages/BotswanaSurvey';
 interface BrokerageOverviewPageProps {
   data: SurveyData;
   updateData: (data: Partial<SurveyData>) => void;
+  country?: string;
 }
 
-export default function BrokerageOverviewPage({ data, updateData }: BrokerageOverviewPageProps) {
-  const districts = [
+export default function BrokerageOverviewPage({ data, updateData, country = 'Botswana' }: BrokerageOverviewPageProps) {
+  const districtsBotswana = [
     'South East District',
     'North East District',
     'Southern District',
@@ -19,6 +20,21 @@ export default function BrokerageOverviewPage({ data, updateData }: BrokerageOve
     'Ngamiland District',
     'Chobe District',
   ];
+
+  const provincesZambia = [
+    'Central',
+    'Copperbelt',
+    'Eastern',
+    'Luapula',
+    'Lusaka',
+    'Muchinga',
+    'Northern',
+    'North Western',
+    'Southern',
+    'Western',
+  ];
+
+  const districts = country === 'Zambia' ? provincesZambia : districtsBotswana;
 
   const services = [
     'Long term broker',

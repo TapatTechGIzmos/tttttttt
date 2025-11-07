@@ -239,6 +239,7 @@ export default function ZambiaLifeSurvey() {
               data={surveyData}
               updateData={updateSurveyData}
               surveyType="life"
+              country="Zambia"
               {...(currentPage === 4 ? { insurers: lifeInsurers } : {})}
             />
           </div>
