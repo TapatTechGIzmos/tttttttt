@@ -7,7 +7,7 @@ export default function Hero() {
     <div className="relative bg-blue-900 text-white">
       <div className="absolute inset-0">
         <img
-          src="https://images.unsplash.com/photo-1573164713714-d95e436ab8d6?auto=format&fit=crop&w=1920&q=80"
+          src="https://res.cloudinary.com/dnunw2a7q/image/upload/v1762634063/Insurance_Intelligence_Africa_PTT_2025_GIF_002_uwhs78.gif"
           alt="Diverse team of insurance brokers in professional consultation"
           className="w-full h-full object-cover opacity-20"
         />
