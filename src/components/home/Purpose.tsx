@@ -36,19 +36,19 @@ const purposes = [
 
 export default function Purpose() {
   return (
-    <div className="bg-white py-16">
+    <div className="bg-white py-8 sm:py-12 md:py-16">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <h2 className="text-3xl font-bold text-center mb-12">Our Purpose</h2>
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <h2 className="text-2xl sm:text-3xl md:text-4xl font-bold text-center mb-8 sm:mb-10 md:mb-12">Our Purpose</h2>
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 sm:gap-6 md:gap-8">
           {purposes.map((purpose) => {
             const Icon = purpose.icon;
             return (
-              <div key={purpose.title} className="bg-gray-50 p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
-                <div className="flex items-center mb-4">
-                  <Icon className="h-6 w-6 text-blue-600 mr-3" />
-                  <h3 className="text-xl font-semibold text-blue-900">{purpose.title}</h3>
+              <div key={purpose.title} className="bg-gray-50 p-4 sm:p-5 md:p-6 rounded-lg shadow-sm hover:shadow-md transition-shadow">
+                <div className="flex items-center mb-3 sm:mb-4">
+                  <Icon className="h-5 w-5 sm:h-6 sm:w-6 text-blue-600 mr-2 sm:mr-3 flex-shrink-0" />
+                  <h3 className="text-base sm:text-lg md:text-xl font-semibold text-blue-900">{purpose.title}</h3>
                 </div>
-                <p className="text-gray-600">{purpose.description}</p>
+                <p className="text-sm sm:text-base text-gray-600">{purpose.description}</p>
               </div>
             );
           })}
