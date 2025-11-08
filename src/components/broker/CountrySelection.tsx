@@ -21,7 +21,16 @@ const SurveyButton: React.FC<SurveyButtonProps> = ({ type, onClick }) => (
 
 export default function CountrySelection() {
   const navigate = useNavigate();
-  const countries = ['Botswana', 'Zambia'];
+  const countries = [
+    {
+      name: 'Botswana',
+      flag: 'https://res.cloudinary.com/dnunw2a7q/image/upload/v1762636211/botswana-flag_ke8wfr.webp'
+    },
+    {
+      name: 'Zambia',
+      flag: 'https://res.cloudinary.com/dnunw2a7q/image/upload/v1762636211/zambia-flag_y48kbn.webp'
+    }
+  ];
 
   const handleSurveyClick = (country: string, type: 'life' | 'non-life') => {
     if (country === 'Botswana' && type === 'non-life') {
@@ -43,18 +52,25 @@ export default function CountrySelection() {
 
       <div className="space-y-8">
         {countries.map((country) => (
-          <div key={country} className="space-y-3">
-            <h2 className="text-xl font-semibold text-gray-800 border-b border-gray-200 pb-2">
-              {country}
-            </h2>
+          <div key={country.name} className="space-y-3">
+            <div className="flex items-center gap-3 border-b border-gray-200 pb-2">
+              <img
+                src={country.flag}
+                alt={`${country.name} flag`}
+                className="w-8 h-6 object-cover rounded shadow-sm"
+              />
+              <h2 className="text-xl font-semibold text-gray-800">
+                {country.name}
+              </h2>
+            </div>
             <div className="space-y-3 pl-2">
               <SurveyButton
                 type="life"
-                onClick={() => handleSurveyClick(country, 'life')}
+                onClick={() => handleSurveyClick(country.name, 'life')}
               />
               <SurveyButton
                 type="non-life"
-                onClick={() => handleSurveyClick(country, 'non-life')}
+                onClick={() => handleSurveyClick(country.name, 'non-life')}
               />
             </div>
           </div>
