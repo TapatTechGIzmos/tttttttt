@@ -12,6 +12,9 @@ export default function Hero() {
             alt="Diverse team of insurance brokers in professional consultation"
             className="w-full h-auto object-contain"
           />
+           <Link to="/broker-survey" className="inline-block bg-blue-600 text-white px-8 py-3 rounded-md hover:bg-blue-700 transition-colors">
+              Take Broker Survey
+            </Link>
         </div>
         <div className="px-4 sm:px-6 lg:px-8 py-12 text-white">
           <div className="text-center">
