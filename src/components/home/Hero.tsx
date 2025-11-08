@@ -13,7 +13,7 @@ export default function Hero() {
             className="w-full h-auto object-contain"
           />
           <div className="absolute bottom-8 left-1/2 transform translate-x-[10%]">
-            <Link to="/broker-survey" className="inline-block bg-red-600 text-white px-100 py-2 rounded-md hover:bg-red-700 transition-colors text-lg font-semibold shadow-lg">
+            <Link to="/broker-survey" className="inline-block bg-red-600 text-white px-24 py-2 rounded-md hover:bg-red-700 transition-colors text-lg font-semibold shadow-lg">
               Take Broker Survey
             </Link>
           </div>
