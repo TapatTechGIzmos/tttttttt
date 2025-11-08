@@ -12,12 +12,11 @@ export default function BrokerSurvey() {
         <SurveyHeader />
         
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 mb-12">
-          <div className="bg-white p-8 rounded-lg shadow-md">
-            <h2 className="text-2xl font-bold mb-6">Why Participate?</h2>
+          <div className="bg-white p-8 rounded-lg shadow-md"> 
             <CountrySelection />
           </div>
           
-          <div>
+          <div><h2 className="text-2xl font-bold mb-6">Why Participate?</h2>
             <SurveyBenefits />
           </div>
         </div>
