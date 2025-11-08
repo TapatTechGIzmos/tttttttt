@@ -26,12 +26,12 @@ export default function SurveyBenefits() {
     {
       icon: <Gift className="h-6 w-6 text-blue-600" />,
       title: "Prize Draw: FREE Corporate Website Package!",
-      description: "Win Your Digital Storefront: Enter the draw to win one of five professional website packages (valued at P5,000), instantly building your online presence and modernizing your brokerage—at zero cost to you. EVERY valid participant receives an A5 Hard Cover Notebook."
+      description: "Win Your Digital Storefront: Enter the draw to win one of five professional website packages (valued at P5,000), instantly building your online presence and modernising your brokerage—at zero cost to you. EVERY valid participant receives an A5 Hard Cover Notebook."
     },
     {
       icon: <FileText className="h-6 w-6 text-blue-600" />,
       title: "Guaranteed Value: Exclusive Insights",
-      description: "Strategize for 2026: Receive a complimentary executive summary of the final report (valued at R12,000), giving you unparalleled insight into regional trends, client expectations, and growth opportunities across Botswana and Zambia."
+      description: "Strategise for 2026: Receive a complimentary executive summary of the final report (valued at R12,000), giving you unparalleled insight into regional trends, client expectations, and growth opportunities across Botswana and Zambia."
     },
     {
       icon: <LineChart className="h-6 w-6 text-blue-600" />,
