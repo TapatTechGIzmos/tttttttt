@@ -1,5 +1,6 @@
 import { SurveyData } from '../types/surveyTypes';
 
+// --- GOOGLE APPS SCRIPT URLS ---
 const GOOGLE_APPS_SCRIPT_URL_Botswana = "https://script.google.com/macros/s/AKfycbzfSHW4zaRjlewYo8QBjPBu4rwW0NeyX_0m3fi_0sWhNPXIqM1HyR6IajSKCxy5Gedk/exec";
 const GOOGLE_APPS_SCRIPT_URL_LIFE_Botswana = "https://script.google.com/macros/s/AKfycby5TU8A96WeXk_6NnesMYG-fSUo0r-94zetBylmGN5ntRJ32ikPTkYhuiQVe6mC8h6iwQ/exec";
 const GOOGLE_APPS_SCRIPT_URL_ZAMBIA = ""; // Placeholder
@@ -40,6 +41,7 @@ const Q17_RANKS = [1, 2, 3, 4, 5, 6];
 // Helper function definition
 const mapToBinary = (selectedItems: string[] | undefined, allPossibleOptions: string[]): number[] => {
     const selectedSet = new Set(selectedItems || []);
+    // Ensure explicit return type of number (0 or 1)
     return allPossibleOptions.map(option => selectedSet.has(option) ? 1 : 0);
 };
 
@@ -54,30 +56,33 @@ export function mapSurveyDataForSubmission(data: SurveyData, isLifeSurvey: boole
     );
 
     // --- 2. Q1 - Q5 (Profile / Demographics) ---
-    // Q1 (Text fields)
+    // Q1 (Text fields) - 4 columns
     submissionArray.push(data.name || ""); // 3: Q1_Name
     submissionArray.push(data.company || ""); // 4: Q1_Company
     submissionArray.push(data.email || ""); // 5: Q1_Email
     submissionArray.push(data.district || ""); // 6: Q1_District
 
-    // Q2 (Text field)
+    // Q2 (Text field) - 1 column
     submissionArray.push(data.yearsOfExperience || ""); // 7: Q2_Years_Of_Experience
     
     // Q3: Job Function (Binary - 3 columns)
     const jobFunctionOptions = ['Client Facing / Broker', 'Sales manager / Team Leader', 'Senior Management'];
     jobFunctionOptions.forEach(option => {
+        // Pushes 1 or 0 (number)
         submissionArray.push(data.jobFunction === option ? 1 : 0);
     }); // 8-10
     
     // Q4: Gender (Binary - 2 columns)
     const genderOptions = ['Male', 'Female'];
     genderOptions.forEach(option => {
+        // Pushes 1 or 0 (number)
         submissionArray.push(data.gender === option ? 1 : 0);
     }); // 11-12
 
     // Q5: Age Group (Binary - 5 columns)
     const ageGroupOptions = ['20 to 30 years', '31 to 40 years', '41 to 50 years', '51 to 60 years', '60+ years'];
     ageGroupOptions.forEach(option => {
+        // Pushes 1 or 0 (number)
         submissionArray.push(data.ageGroup === option ? 1 : 0);
     }); // 13-17
 
@@ -159,6 +164,18 @@ export function mapSurveyDataForSubmission(data: SurveyData, isLifeSurvey: boole
         data.brandWords?.[1] || "", // Q21a_Brand_Word_2 (Text)
         data.serviceImprovement || "" // Q21b_Service_Improvement_Needed (Text)
     );
+
+    // -----------------------------------------------------------------------------------------------------
+    // IMPORTANT: The following fields from the original component code were removed to match the 165 headers.
+    // Ensure the data object does not contain these, as they would be pushed here if they existed.
+    // Data pushed from the client in the array must ONLY contain the following:
+    // -----------------------------------------------------------------------------------------------------
+    // REMOVED FIELDS: 
+    // data.selectedInsurer, data.serviceInfluence, data.productClasses, data.valueBeyondPrice, data.claimsExperience,
+    // data.serviceDescription, data.productDifferentiation, data.relationshipExperience, data.knowledgeRating
+    // data.successionPlan
+    // -----------------------------------------------------------------------------------------------------
+
 
     // --- 7. Q22 - Q29 (Market Outlook - Shifted Q#s) ---
     
