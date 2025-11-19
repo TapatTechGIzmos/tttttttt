@@ -179,7 +179,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
       <div className="space-y-6">
         <div>
           <label className="block text-xl font-bold text-gray-900 mb-3">
-            17. Rank the factors you consider when placing business with an insurance company.
+            17. Rank the factors in order of importance that you consider when placing business with an insurance company.
           </label>
 
           <div className="mb-4 pl-6">
