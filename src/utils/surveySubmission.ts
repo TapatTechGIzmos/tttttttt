@@ -22,14 +22,14 @@ const Q14_OPTIONS = ['Quoting and comparing products', 'Submitting applications'
 const Q16_OPTIONS = ['To save time', 'To improve customer experience', 'To reduce admin workload', 'To remain competitive', 'To lower operational costs', 'I wouldn\'t use more digital tools'];
 const Q22_OPTIONS = ['Technological Disruption and Adoption', 'Changing Client Expectations', 'Cybersecurity Risks', 'Regulatory and Compliance Pressures', 'Climate Change and Sustainability', 'Talent Shortages and Succession Planning', 'Economic Uncertainty and Market Volatility', 'Competition from Insurtech and Direct-to-Consumer Models', 'Data Management and Analytics', 'Rising Operational Costs'];
 
-const Q24a_OPTIONS_SHORT_TERM = ['Active Drive Capital', 'Insure Guard', 'Legalwise Botswana', 'Lords Insurance', 'Westsure Insurance', 'Have not engaged and plan not to in the next 12 months'];
-const Q24a_OPTIONS_LIFE = ['Afritec Life Insurance', 'Exclusive Life Insurance', 'Westlife Insurance Botswana', 'Have not engaged and plan not to in the next 12 months'];
-const Q24a_OPTIONS_ZAMBIA = ['Have not engaged and plan not to in the next 12 months'];
+const Q24_OPTIONS_SHORT_TERM = ['Active Drive Capital', 'Insure Guard', 'Legalwise Botswana', 'Lords Insurance', 'Westsure Insurance', 'Have not engaged and plan not to in the next 12 months'];
+const Q24_OPTIONS_LIFE = ['Afritec Life Insurance', 'Axion Life', 'Exclusive Life Insurance', 'Westlife Insurance Botswana', 'None yet'];
+const Q24_OPTIONS_ZAMBIA = ['Have not engaged and plan not to in the next 12 months'];
 
-const Q24b_OPTIONS = ['Direct access to senior and empowered underwriters with local mandates', 'Superior and fixed binder fees are designed to offset the risk of switching capacity.', 'Quick claims settlement (straightforward, simplified process (e.g., 48-hour assessment).', 'Agile digital tools that integrate with our existing systems (e.g., real-time quoting API, faster MTA processing).', 'Specialised risk expertise for emerging sectors', 'Joint marketing funds and resources to help us win business from their target segment.', 'Highly rated reinsurance backing and proven local capitalisation to ensure long-term stability.', 'Continuous product training', 'Other'];
+const Q25_OPTIONS = ['Direct access to senior and empowered underwriters with local mandates', 'Superior and fixed binder fees are designed to offset the risk of switching capacity.', 'Quick claims settlement (straightforward, simplified process (e.g., 48-hour assessment).', 'Agile digital tools that integrate with our existing systems (e.g., real-time quoting API, faster MTA processing).', 'Specialised risk expertise for emerging sectors', 'Joint marketing funds and resources to help us win business from their target segment.', 'Highly rated reinsurance backing and proven local capitalisation to ensure long-term stability.', 'Continuous product training', 'Other'];
 
-const Q26_OPTIONS = ['Business planning session', 'Strategic planning workshops', 'Training events', 'Broker road shows', 'Regular meetings with broker consultant', 'Other (please specify)'];
-const Q27_OPTIONS = ['Product training', 'Enhanced customer service', 'Faster underwriting', 'Increased Insurance marketing', 'Market insights on end-customer segments', 'Selling skills training', 'Other (please specify)'];
+const Q28_OPTIONS = ['Business planning session', 'Strategic planning workshops', 'Training events', 'Broker road shows', 'Regular meetings with broker consultant', 'Other (please specify)'];
+const Q29_OPTIONS = ['Product training', 'Enhanced customer service', 'Faster underwriting', 'Increased Insurance marketing', 'Market insights on end-customer segments', 'Selling skills training', 'Other (please specify)'];
 
 const Q15_KEYS = ['clientAcquisition', 'quotation', 'policyAdmin', 'claimsManagement', 'financialManagement', 'otherProcesses'];
 const Q19_CATEGORIES = ['underwriting', 'documentation', 'claims', 'postSale', 'relationship', 'proportion'];
@@ -140,19 +140,19 @@ export function mapSurveyDataForSubmission(data: SurveyData, isLifeSurvey: boole
 
     submissionArray.push(data.barriersToBusiness || "");
 
-    const q24aOptions = country === "Zambia" ? Q24a_OPTIONS_ZAMBIA : (isLifeSurvey ? Q24a_OPTIONS_LIFE : Q24a_OPTIONS_SHORT_TERM);
-    submissionArray.push(...mapToBinary(data.newLifeInsurers, q24aOptions));
+    const q24Options = country === "Zambia" ? Q24_OPTIONS_ZAMBIA : (isLifeSurvey ? Q24_OPTIONS_LIFE : Q24_OPTIONS_SHORT_TERM);
+    submissionArray.push(...mapToBinary(data.newLifeInsurers, q24Options));
 
-    submissionArray.push(...mapToBinary(data.newEntrantCriteria, Q24b_OPTIONS));
+    submissionArray.push(...mapToBinary(data.newEntrantCriteria, Q25_OPTIONS));
 
     submissionArray.push(data.growthProducts || "");
 
     submissionArray.push(data.aiUsage ?? 0);
 
-    submissionArray.push(...mapToBinary(data.communicationPreferences, Q26_OPTIONS));
+    submissionArray.push(...mapToBinary(data.communicationPreferences, Q28_OPTIONS));
     submissionArray.push(data.communicationOther || "");
 
-    submissionArray.push(...mapToBinary(data.supportNeeds, Q27_OPTIONS));
+    submissionArray.push(...mapToBinary(data.supportNeeds, Q29_OPTIONS));
     submissionArray.push(data.supportNeedsOther || "");
 
     submissionArray.push(data.optOut ? 1 : 0);
