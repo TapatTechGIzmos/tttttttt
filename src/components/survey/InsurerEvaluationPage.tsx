@@ -39,7 +39,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
   const ratingCategories = [
     { key: 'underwriting', label: 'Overall underwriting experience (Client on boarding, Quoting)' },
-    { key: 'documentation', label: 'Policy documentation' },
+    { key: 'documentation', label: 'Policy documentation TAT' },
     { key: 'claims', label: 'Overall claims experience' },
     { key: 'postSale', label: 'Overall post sale service' },
     { key: 'relationship', label: 'Overall relationship management' },
