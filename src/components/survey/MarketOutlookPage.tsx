@@ -142,7 +142,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType, countr
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            29a. With which of the following new {isLifeSurvey ? 'Life' : 'Short-Term'} Insurers have you placed business or plan to place business in the next 12 months? (Select all that apply)
+            24a. With which of the following new {isLifeSurvey ? 'Life' : 'Short-Term'} Insurers have you placed business or plan to place business in the next 12 months? (Select all that apply)
           </label>
           <div className="space-y-2">
             {(isZambia ? [
@@ -177,7 +177,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType, countr
         <div>
           <div className="flex items-center justify-between mb-3">
             <label className="block text-sm font-medium text-gray-700">
-              29b. For a new market entrant, to win new business from your brokerage, which THREE resources, services, or commitments are most critical to offer? (Please select up to 3)
+              24b. For a new market entrant, to win new business from your brokerage, which THREE resources, services, or commitments are most critical to offer? (Please select up to 3)
             </label>
             <span className="text-xs text-blue-600 font-medium">
               Selected: {data.newEntrantCriteria?.length || 0} of 3
@@ -211,7 +211,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType, countr
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            24. Which products do you expect to be the biggest source of growth for your business in the coming year,2026?
+            25. Which products do you expect to be the biggest source of growth for your business in the coming year,2026?
           </label>
           <textarea
             value={data.growthProducts}
@@ -224,7 +224,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType, countr
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            25. Indicate the extent to which your business is currently using or plans to use Artificial Intelligence (AI)
+            26. Indicate the extent to which your business is currently using or plans to use Artificial Intelligence (AI)
           </label>
           <div className="bg-gray-50 p-4 rounded-lg mb-4">
             <p className="text-sm text-gray-600 leading-relaxed">
@@ -255,7 +255,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType, countr
         <div>
           <div className="flex items-center justify-between mb-3">
             <label className="block text-sm font-medium text-gray-700">
-              26. How could your insurer partners better communicate with your company to improve service levels?
+              27. How could your insurer partners better communicate with your company to improve service levels?
             </label>
             <span className="text-xs text-blue-600 font-medium">
               Selected: {data.communicationPreferences.length} of {communicationPreferences.length}
@@ -288,7 +288,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType, countr
         <div>
           <div className="flex items-center justify-between mb-3">
             <label className="block text-sm font-medium text-gray-700">
-              27. What types of support from insurers would help you attract new clients? (Select all that apply)
+              28. What types of support from insurers would help you attract new clients? (Select all that apply)
             </label>
             <span className="text-xs text-blue-600 font-medium">
               Selected: {data.supportNeeds.length} of {supportNeeds.length}
@@ -327,7 +327,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType, countr
               className="w-4 h-4 text-blue-600 rounded focus:ring-blue-500 mt-1"
             />
             <span className="ml-3 text-sm text-gray-700">
-              <strong>34. Future correspondence:</strong> I wish to opt out of any follow-up correspondence regarding the Long-term Insurance 2025/26 survey, and I acknowledge that this is inclusive of not being sent the executive summary report and being included in the prize draw.
+              <strong>29. Future correspondence:</strong> I wish to opt out of any follow-up correspondence regarding the Long-term Insurance 2025/26 survey, and I acknowledge that this is inclusive of not being sent the executive summary report and being included in the prize draw.
             </span>
           </label>
         </div>
