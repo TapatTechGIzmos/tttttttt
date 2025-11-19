@@ -370,7 +370,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
                   {q21Ratings.map((item, index) => (
                     <div key={item.key} className="bg-white p-4 rounded-lg">
                       <label className="block text-sm font-medium text-gray-700 mb-2">
-                        {`21${String.fromCharCode(97 + index)}. ${item.label}`}
+                        {`20${String.fromCharCode(97 + index)}. ${item.label}`}
                       </label>
                       <div className="flex flex-wrap gap-4">
                         {/* Rating options for Q21 (fixed values/labels in the original code) */}

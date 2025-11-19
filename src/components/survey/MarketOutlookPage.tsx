@@ -105,7 +105,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType, countr
         <div>
           <div className="flex items-center justify-between mb-3">
             <label className="block text-sm font-medium text-gray-700">
-              27. What are your biggest concerns for the coming year,2026? (select up to 5)
+              22. What are your biggest concerns for the coming year,2026? (select up to 5)
             </label>
             <span className="text-xs text-blue-600 font-medium">
               Selected: {data.biggestConcerns.length} of 5
@@ -129,7 +129,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType, countr
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            28. What specific barriers are you facing when trying to convert prospects into clients?
+            23. What specific barriers are you facing when trying to convert prospects into clients?
           </label>
           <textarea
             value={data.barriersToBusiness}
@@ -211,7 +211,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType, countr
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            30. Which products do you expect to be the biggest source of growth for your business in the coming year,2026?
+            24. Which products do you expect to be the biggest source of growth for your business in the coming year,2026?
           </label>
           <textarea
             value={data.growthProducts}
@@ -224,7 +224,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType, countr
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-3">
-            31. Indicate the extent to which your business is currently using or plans to use Artificial Intelligence (AI)
+            25. Indicate the extent to which your business is currently using or plans to use Artificial Intelligence (AI)
           </label>
           <div className="bg-gray-50 p-4 rounded-lg mb-4">
             <p className="text-sm text-gray-600 leading-relaxed">
@@ -255,7 +255,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType, countr
         <div>
           <div className="flex items-center justify-between mb-3">
             <label className="block text-sm font-medium text-gray-700">
-              32. How could your insurer partners better communicate with your company to improve service levels?
+              26. How could your insurer partners better communicate with your company to improve service levels?
             </label>
             <span className="text-xs text-blue-600 font-medium">
               Selected: {data.communicationPreferences.length} of {communicationPreferences.length}
@@ -288,7 +288,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType, countr
         <div>
           <div className="flex items-center justify-between mb-3">
             <label className="block text-sm font-medium text-gray-700">
-              33. What types of support from insurers would help you attract new clients? (Select all that apply)
+              27. What types of support from insurers would help you attract new clients? (Select all that apply)
             </label>
             <span className="text-xs text-blue-600 font-medium">
               Selected: {data.supportNeeds.length} of {supportNeeds.length}
