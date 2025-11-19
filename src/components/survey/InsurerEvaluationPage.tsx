@@ -426,7 +426,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
               }) && (
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    21m. Please briefly explain the main reason for this rating or suggest one specific improvement.
+                    21m. For any area rated "Poor" or "Very Poor," please state the main reason for the low rating and suggest one specific improvement the insurer could implement.
                   </label>
                   <textarea
                     value={data.q21FollowUp || ''}
