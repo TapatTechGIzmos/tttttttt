@@ -149,7 +149,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType, countr
               'Have not engaged and plan not to in the next 12 months',
             ] : isLifeSurvey ? [
               'Afritec Life Insurance',
-              "Axion Life'
+              'Axion Life',
               'Exclusive Life Insurance',
               'Westlife Insurance Botswana',
               'None yet',
