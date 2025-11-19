@@ -48,11 +48,16 @@ const mapToBinary = (selectedItems: string[] | undefined, allPossibleOptions: st
 export function mapSurveyDataForSubmission(data: SurveyData, isLifeSurvey: boolean = false, country: string = "Botswana"): (string | number)[] {
     const submissionArray: (string | number)[] = [];
 
+    // --- NEW LOGIC: DETERMINE SOURCE LABEL ---
+    const surveyTypeLabel = isLifeSurvey ? 'Life' : 'Short-Term';
+    const sourceLabel = `${country} ${surveyTypeLabel}`;
+    // -----------------------------------------
+
     // --- 1. ADMINISTRATIVE FIELDS (Q0) ---
     submissionArray.push(
         new Date().toISOString(), // 0: TIMESTAMP
         country, // 1: Survey_Country
-        "Web Survey App" // 2: Survey_Source
+        sourceLabel // 2: Survey_Source (UPDATED)
     );
 
     // --- 2. Q1 - Q5 (Profile / Demographics) ---
@@ -165,18 +170,6 @@ export function mapSurveyDataForSubmission(data: SurveyData, isLifeSurvey: boole
         data.serviceImprovement || "" // Q21b_Service_Improvement_Needed (Text)
     );
 
-    // -----------------------------------------------------------------------------------------------------
-    // IMPORTANT: The following fields from the original component code were removed to match the 165 headers.
-    // Ensure the data object does not contain these, as they would be pushed here if they existed.
-    // Data pushed from the client in the array must ONLY contain the following:
-    // -----------------------------------------------------------------------------------------------------
-    // REMOVED FIELDS: 
-    // data.selectedInsurer, data.serviceInfluence, data.productClasses, data.valueBeyondPrice, data.claimsExperience,
-    // data.serviceDescription, data.productDifferentiation, data.relationshipExperience, data.knowledgeRating
-    // data.successionPlan
-    // -----------------------------------------------------------------------------------------------------
-
-
     // --- 7. Q22 - Q29 (Market Outlook - Shifted Q#s) ---
     
     // Q22: Biggest Concerns (Binary - 10 columns)
@@ -222,6 +215,10 @@ export async function submitSurvey(
     setIsSubmitting: (isSubmitting: boolean) => void,
     isLifeSurvey: boolean = false
 ): Promise<SubmissionResult> {
+    
+    // Diagnostic target length (Calculated based on header structure, assuming minimal Q12b fields)
+    const EXPECTED_LENGTH = 166; 
+
     if (!setIsSubmitting) {
         console.error("submitSurvey requires setIsSubmitting setter function.");
         return { success: false, message: "Internal error." };
@@ -234,7 +231,14 @@ export async function submitSurvey(
     };
 
     try {
-        const dataRowToSubmit = mapSurveyDataForSubmission(surveyData, isLifeSurvey);
+        const dataRowToSubmit = mapSurveyDataForSubmission(surveyData, isLifeSurvey, surveyData.country || "Botswana");
+
+        // --- DEVELOPMENT DIAGNOSTIC ---
+        if (dataRowToSubmit.length !== EXPECTED_LENGTH) {
+            console.warn(`[DIAGNOSTIC] Submission Array Length Mismatch! Expected ${EXPECTED_LENGTH} columns, got ${dataRowToSubmit.length}. Check Q12b mapping.`);
+            console.log("Array being sent:", dataRowToSubmit);
+        }
+        // ------------------------------
         
         // Use the appropriate URL based on the survey type
         const scriptUrl = isLifeSurvey ? GOOGLE_APPS_SCRIPT_URL_LIFE_Botswana : GOOGLE_APPS_SCRIPT_URL_Botswana; 
