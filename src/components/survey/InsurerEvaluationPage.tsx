@@ -419,6 +419,25 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
               </div>
               {/* END: Question 21 */}
 
+              {/* Conditional Follow-up for Q21 - Show if any rating is Poor or Very Poor */}
+              {q21Ratings.some(item => {
+                const rating = data.detailedRatings[item.key as keyof typeof data.detailedRatings];
+                return rating === 'Poor' || rating === 'Very Poor';
+              }) && (
+                <div>
+                  <label className="block text-sm font-medium text-gray-700 mb-2">
+                    21m. Please briefly explain the main reason for this rating or suggest one specific improvement.
+                  </label>
+                  <textarea
+                    value={data.q21FollowUp || ''}
+                    onChange={(e) => updateData({ q21FollowUp: e.target.value })}
+                    rows={4}
+                    className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                    placeholder="Your response..."
+                  />
+                </div>
+              )}
+
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-3">
                   22a. When considering the overall brand and reputation of this insurer, what specific words or phrases come to mind?
