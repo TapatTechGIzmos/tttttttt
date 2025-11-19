@@ -167,7 +167,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
     { key: 'regionalPresence', label: 'Regional presence' },
     { key: 'responsiveness', label: 'Responsiveness and timeliness' },
     { key: 'techInnovation', label: 'Technology innovation' },
-    { key: 'midTermAlterations', label: 'Timeliness of Mid Term alterations' },
+    { key: 'midTermAlterations', label: 'Timeliness of Mid-term amendment' },
     { key: 'renewalTerms', label: 'Timeliness of Renewal terms' },
     { key: 'trainingSupport', label: 'Training & Support' },
   ];
@@ -519,7 +519,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
                   <option value="Regional presence">Regional presence</option>
                   <option value="Responsiveness and timeliness">Responsiveness and timeliness</option>
                   <option value="Technology innovation">Technology innovation</option>
-                  <option value="Timeliness of Mid Term alterations">Timeliness of Mid Term alterations</option>
+                  <option value="Timeliness of Mid-term amendment">Timeliness of Mid-term amendment</option>
                   <option value="Timeliness of Renewal terms">Timeliness of Renewal terms</option>
                   <option value="Training & Support">Training & Support</option>
                 </select>
