@@ -11,7 +11,6 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
   const defaultInsurers = [
     'Active Drive Capital',
     'Alpha Direct Insurance',
-    'Axion Life',
     'Botswana Insurance Company (BIC)',
     'Bryte Risk Service',
     'Export Credit Insurance & Guarantee Company',
