@@ -2,7 +2,7 @@ import { SurveyData } from '../types/surveyTypes';
 
 const GOOGLE_APPS_SCRIPT_URL_Botswana = "https://script.google.com/macros/s/AKfycbzfSHW4zaRjlewYo8QBjPBu4rwW0NeyX_0m3fi_0sWhNPXIqM1HyR6IajSKCxy5Gedk/exec";
 const GOOGLE_APPS_SCRIPT_URL_LIFE_Botswana = "https://script.google.com/macros/s/AKfycby5TU8A96WeXk_6NnesMYG-fSUo0r-94zetBylmGN5ntRJ32ikPTkYhuiQVe6mC8h6iwQ/exec";
-const GOOGLE_APPS_SCRIPT_URL_ZAMBIA = "";
+const GOOGLE_APPS_SCRIPT_URL_ZAMBIA = "https://script.google.com/macros/s/AKfycbyUVZjJdWge2hcGQNj2CsSdgDU4Zk4q_kjmfc6H8NMU8qi4OQLKCzldBqlF02xNzT8Ibw/exec";
 const GOOGLE_APPS_SCRIPT_URL_ZAMBIA_LIFE = "";
 
 const Q6_OPTIONS_BOTSWANA = ['South East District', 'North East District', 'Southern District', 'Kweneng District', 'Kgatleng Distrct', 'Central District', 'Ghanzi District', 'Kgalagadi District', 'Ngamiland District', 'Chobe District'];
