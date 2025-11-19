@@ -129,7 +129,7 @@ export default function MarketOutlookPage({ data, updateData, surveyType, countr
 
         <div>
           <label className="block text-sm font-medium text-gray-700 mb-2">
-            28. What specific barriers are you facing when trying to convert prospects into clients, and how can this insurer help address these challenges?
+            28. What specific barriers are you facing when trying to convert prospects into clients?
           </label>
           <textarea
             value={data.barriersToBusiness}
