@@ -21,7 +21,7 @@ export default function Hero() {
         <div className="px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12 text-white">
           <div className="text-center">
             <h1 className="text-2xl sm:text-3xl md:text-5xl lg:text-6xl font-bold mb-4 sm:mb-6">
-              Lllllllleading Insurance Market Research in Africa
+              Leading Insurance Market Research in Africa
             </h1>
             <p className="text-base sm:text-lg md:text-xl lg:text-2xl mb-6 sm:mb-8 max-w-3xl mx-auto">
               Delivering actionable insights and market intelligence to shape the future of African insurance
