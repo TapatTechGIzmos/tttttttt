@@ -381,64 +381,6 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
                 <p className="text-lg font-semibold text-blue-900 mt-2">{highestProportionInsurer}</p>
               </div>
 
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  <span className="text-red-600">*</span> 20a. Thinking about the five key areas you used to assess this insurer, what influenced the service rating you gave, and how could their service evolve over the next 12 months to better meet your needs?
-                </label>
-                <p className="text-xs text-gray-600 mb-3">(Please include any specific experiences, strengths, or areas for improvement you feel are important)</p>
-                <textarea
-                  value={data.serviceInfluence}
-                  onChange={(e) => updateData({ serviceInfluence: e.target.value })}
-                  rows={5}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Your response..."
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  <span className="text-red-600">*</span>  20b. Please name one or more product classes acquired from this insurer?
-                </label>
-                <textarea
-                  value={data.productClasses}
-                  onChange={(e) => updateData({ productClasses: e.target.value })}
-                  rows={3}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Your response..."
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  <span className="text-red-600">*</span>  20c. Recognising that competitive pricing is essential in today's soft market, what other factors do you consider equally important. What could this insurer offer or improve to deliver value beyond price alone?
-                </label>
-                <textarea
-                  value={data.valueBeyondPrice}
-                  onChange={(e) => updateData({ valueBeyondPrice: e.target.value })}
-                  rows={5}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Your response..."
-                  required
-                />
-              </div>
-
-              <div>
-                <label className="block text-sm font-medium text-gray-700 mb-2">
-                  <span className="text-red-600">*</span> 20d. Claims Experience - Please describe your experience over the past year with this insurer in relation to claims—both your own and your customers. What worked well, and what improvements would you like to see to better support you and your clients going forward?
-                </label>
-                <p className="text-xs text-gray-600 mb-3">(Feel free to comment on areas such as claims handling efficiency, communication, transparency, support during the process, and outcomes.)</p>
-                <textarea
-                  value={data.claimsExperience}
-                  onChange={(e) => updateData({ claimsExperience: e.target.value })}
-                  rows={5}
-                  className="w-full px-4 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-                  placeholder="Your response..."
-                  required
-                />
-              </div>
-
               {/* START: Question 21 - Subcomponent Labeling Verified */}
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-3">
