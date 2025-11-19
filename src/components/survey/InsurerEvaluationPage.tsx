@@ -420,7 +420,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-3">
-                  22a. When considering the overall brand and reputation of this insurer, what specific words or phrases come to mind?
+                  20a. When considering the overall brand and reputation of this insurer, what specific words or phrases come to mind?
                 </label>
                 <div className="space-y-3">
                   {[0, 1].map((index) => (
@@ -444,7 +444,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
 
               <div>
                 <label className="block text-sm font-medium text-gray-700 mb-2">
-                  22b. Please select the part of this insurer's service proposition you think most needs improvement:
+                  20b. Please select the part of this insurer's service proposition you think most needs improvement:
                 </label>
                 <select
                   value={data.serviceImprovement}
