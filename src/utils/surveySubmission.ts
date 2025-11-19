@@ -21,7 +21,7 @@ const Q12b_OPTIONS_SHORT_TERM = ['Commercial Property/Fire & Allied Perils', 'Mo
 const Q13_OPTIONS = ['Buy hot leads list', 'Existing client referral', 'Leverage social media', 'Cross sell to existing client base', 'Referral from a professional networks', 'Direct Outreach - Cold calling and email', 'Partnerships and Alliances (corporates, affinity groups, government departments, etc)', 'Other (please specify)'];
 const Q14_OPTIONS = ['Quoting and comparing products', 'Submitting applications', 'Managing renewals', 'Processing MTAs', 'Communicating with clients', 'Claims handling', 'None of the above'];
 const Q16_OPTIONS = ['To save time', 'To improve customer experience', 'To reduce admin workload', 'To remain competitive', 'To lower operational costs', 'I wouldn\'t use more digital tools'];
-const Q27_OPTIONS = ['Technological Disruption and Adoption', 'Changing Client Expectations', 'Cybersecurity Risks', 'Regulatory and Compliance Pressures', 'Climate Change and Sustainability', 'Talent Shortages and Succession Planning', 'Economic Uncertainty and Market Volatility', 'Competition from Insurtech and Direct-to-Consumer Models', 'Data Management and Analytics', 'Rising Operational Costs']; // Q22 in target sheet
+const Q27_OPTIONS = ['Technological Disruption and Adoption', 'Changing Client Expectations', 'Cybersecurity Risks', 'Regulatory and Compliance Pressures', 'Climate Change and Sustainability', 'Talent Shortages and Succession Planning', 'Economic Uncertainty and Market Volatility', 'Competition from Insurtech and Direct-to-Consumer Models', 'Data Management and Analytics', 'Rising Operational Costs']; 
 
 const Q29a_OPTIONS_SHORT_TERM = ['Active Drive Capital', 'Insure Guard', 'Legalwise Botswana', 'Lords Insurance', 'Westsure Insurance', 'Have not engaged and plan not to in the next 12 months'];
 const Q29a_OPTIONS_LIFE = ['Afritec Life Insurance', 'Exclusive Life Insurance', 'Westlife Insurance Botswana', 'Have not engaged and plan not to in the next 12 months'];
@@ -29,8 +29,8 @@ const Q29a_OPTIONS_ZAMBIA = ['Have not engaged and plan not to in the next 12 mo
 
 const Q29b_OPTIONS = ['Direct access to senior and empowered underwriters with local mandates', 'Superior and fixed binder fees are designed to offset the risk of switching capacity.', 'Quick claims settlement (straightforward, simplified process (e.g., 48-hour assessment).', 'Agile digital tools that integrate with our existing systems (e.g., real-time quoting API, faster MTA processing).', 'Specialised risk expertise for emerging sectors', 'Joint marketing funds and resources to help us win business from their target segment.', 'Highly rated reinsurance backing and proven local capitalisation to ensure long-term stability.', 'Continuous product training', 'Other'];
 
-const Q32_OPTIONS = ['Business planning session', 'Strategic planning workshops', 'Training events', 'Broker road shows', 'Regular meetings with broker consultant', 'Other (please specify)']; // Q27 in target sheet
-const Q33_OPTIONS = ['Product training', 'Enhanced customer service', 'Faster underwriting', 'Increased Insurance marketing', 'Market insights on end-customer segments', 'Selling skills training', 'Other (please specify)']; // Q28 in target sheet
+const Q32_OPTIONS = ['Business planning session', 'Strategic planning workshops', 'Training events', 'Broker road shows', 'Regular meetings with broker consultant', 'Other (please specify)']; 
+const Q33_OPTIONS = ['Product training', 'Enhanced customer service', 'Faster underwriting', 'Increased Insurance marketing', 'Market insights on end-customer segments', 'Selling skills training', 'Other (please specify)']; 
 
 const Q15_KEYS = ['clientAcquisition', 'quotation', 'policyAdmin', 'claimsManagement', 'financialManagement', 'otherProcesses'];
 const Q19_CATEGORIES = ['underwriting', 'documentation', 'claims', 'postSale', 'relationship', 'proportion'];
@@ -62,45 +62,45 @@ export function mapSurveyDataForSubmission(data: SurveyData, isLifeSurvey: boole
 
     // Q2 (Text field)
     submissionArray.push(data.yearsOfExperience || ""); // 7: Q2_Years_Of_Experience
-    
-    // Q3: Job Function (Binary - 3 columns)
-    const jobFunctionOptions = ['Client Facing / Broker', 'Sales manager / Team Leader', 'Senior Management'];
-    jobFunctionOptions.forEach(option => {
-        submissionArray.push(data.jobFunction === option ? 1 : 0);
-    }); // 8-10
-    
-    // Q4: Gender (Binary - 2 columns)
-    const genderOptions = ['Male', 'Female'];
-    genderOptions.forEach(option => {
-        submissionArray.push(data.gender === option ? 1 : 0);
-    }); // 11-12
+    
+    // Q3: Job Function (Binary - 3 columns)
+    const jobFunctionOptions = ['Client Facing / Broker', 'Sales manager / Team Leader', 'Senior Management'];
+    jobFunctionOptions.forEach(option => {
+        submissionArray.push(data.jobFunction === option ? 1 : 0);
+    }); // 8-10
+    
+    // Q4: Gender (Binary - 2 columns)
+    const genderOptions = ['Male', 'Female'];
+    genderOptions.forEach(option => {
+        submissionArray.push(data.gender === option ? 1 : 0);
+    }); // 11-12
 
-    // Q5: Age Group (Binary - 5 columns)
-    const ageGroupOptions = ['20 to 30 years', '31 to 40 years', '41 to 50 years', '51 to 60 years', '60+ years'];
-    ageGroupOptions.forEach(option => {
-        submissionArray.push(data.ageGroup === option ? 1 : 0);
-    }); // 13-17
+    // Q5: Age Group (Binary - 5 columns)
+    const ageGroupOptions = ['20 to 30 years', '31 to 40 years', '41 to 50 years', '51 to 60 years', '60+ years'];
+    ageGroupOptions.forEach(option => {
+        submissionArray.push(data.ageGroup === option ? 1 : 0);
+    }); // 13-17
 
     // --- 3. Q6 - Q11 (Brokerage Overview) ---
     // Q6: Districts (Binary - 10 columns)
     submissionArray.push(...mapToBinary(data.districts, country === "Zambia" ? Q6_OPTIONS_ZAMBIA : Q6_OPTIONS_BOTSWANA)); // 18-27
     
-    // Q7: Brokerage Size (Binary - 6 columns)
-    const brokerageSizeOptions = ['Solo Broker', '2 to 5 people', '6 to 20 people', '21 to 30 people', '31 to 50 people', '50 plus people'];
-    brokerageSizeOptions.forEach(option => {
-        submissionArray.push(data.brokerageSize === option ? 1 : 0);
-    }); // 28-33
+    // Q7: Brokerage Size (Binary - 6 columns)
+    const brokerageSizeOptions = ['Solo Broker', '2 to 5 people', '6 to 20 people', '21 to 30 people', '31 to 50 people', '50 plus people'];
+    brokerageSizeOptions.forEach(option => {
+        submissionArray.push(data.brokerageSize === option ? 1 : 0);
+    }); // 28-33
 
     // Q8: Services Provided (Binary - 4 columns)
     submissionArray.push(...mapToBinary(data.services, Q8_OPTIONS)); // 34-37
-    
-    // Q9: Personal Lines Segment (Binary - 4 columns)
+    
+    // Q9: Personal Lines Segment (Binary - 4 columns)
     submissionArray.push(...mapToBinary(data.personalLinesSegment, Q9_OPTIONS)); // 38-41
-    
-    // Q10: Corporate Client Size (Binary - 5 columns)
+    
+    // Q10: Corporate Client Size (Binary - 5 columns)
     submissionArray.push(...mapToBinary(data.corporateClientSize, Q10_OPTIONS)); // 42-46
-    
-    // Q11: Commercial Focus (Numeric)
+    
+    // Q11: Commercial Focus (Numeric)
     submissionArray.push(data.commercialFocus ?? 0); // 47
 
     // --- 4. Q12a & Q12b (Products - Binary) ---
@@ -122,7 +122,7 @@ export function mapSurveyDataForSubmission(data: SurveyData, isLifeSurvey: boole
 
     // --- 6. Q17 - Q21 (Insurer Evaluation - Text/Numeric) ---
     
-    // Q17: Placement Factors (Text Ranked - 6 columns)
+    // Q17: Placement Factors (Text Ranked - 6 columns)
     Q17_RANKS.forEach(rank => {
         const factorKey = Object.keys(data.placementFactors || {}).find(
             key => data.placementFactors?.[key] === rank
@@ -219,7 +219,49 @@ export async function submitSurvey(
     try {
         const dataRowToSubmit = mapSurveyDataForSubmission(surveyData, isLifeSurvey);
         
-        // Use the appropriate URL based on the survey type
+        // Use the appropriate URL based on the survey type
         const scriptUrl = isLifeSurvey ? GOOGLE_APPS_SCRIPT_URL_LIFE_Botswana : GOOGLE_APPS_SCRIPT_URL_Botswana; 
 
-        const response = await fetch(script
+        const response = await fetch(scriptUrl, {
+            method: 'POST',
+            body: JSON.stringify(dataRowToSubmit),
+        });
+
+        if (response.ok) {
+            const responseText = await response.text();
+            try {
+                const responseJson = JSON.parse(responseText);
+                if (responseJson.result === 'success') {
+                    result = { success: true, message: "Thank you for your submission!" };
+                } else if (responseJson.result === 'duplicate') {
+                    result = {
+                        success: false,
+                        message: "A submission from this email was already recorded recently. Thank you!"
+                    };
+                } else {
+                    result = {
+                        success: false,
+                        message: responseJson.message || "Submission failed. Please try again later."
+                    };
+                }
+            } catch (e) {
+                result = {
+                    success: false,
+                    message: "The submission server returned an unexpected response format."
+                };
+            }
+        } else {
+            result = {
+                success: false,
+                message: `Network error: Server responded with status ${response.status}`
+            };
+        }
+
+    } catch (error) {
+        console.error("Submission error:", error);
+    } finally {
+        setIsSubmitting(false);
+    }
+
+    return result;
+}
