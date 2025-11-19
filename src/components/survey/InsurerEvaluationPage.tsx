@@ -346,29 +346,6 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
           )}
         </div>
 
-        <div>
-          <label className="block text-sm font-medium text-gray-700 mb-3">
-            20. Insurer with the largest portion of business
-          </label>
-          {highestProportionInsurer ? (
-            <div className="bg-blue-100 border border-blue-300 rounded-lg p-4">
-              <p className="text-sm text-gray-700">
-                Based on your answers in Question 19, the insurer receiving the largest portion of your business is:
-              </p>
-              <p className="text-lg font-semibold text-blue-900 mt-2">{highestProportionInsurer}</p>
-              <p className="text-xs text-gray-600 mt-2">
-                This insurer will be used for the Deep Dive Questions below.
-              </p>
-            </div>
-          ) : (
-            <div className="bg-yellow-50 border border-yellow-200 rounded-lg p-4">
-              <p className="text-sm text-yellow-800">
-                Please complete the ratings in Question 19 to determine which insurer receives the largest portion of your business.
-              </p>
-            </div>
-          )}
-        </div>
-
         <div className="bg-blue-50 p-6 rounded-lg space-y-6">
           <h3 className="text-lg font-semibold text-gray-900">Deep Dive Questions</h3>
 
