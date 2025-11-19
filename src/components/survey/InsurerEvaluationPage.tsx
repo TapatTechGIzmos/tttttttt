@@ -364,7 +364,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
                   </p>
                 </div>
                 <label className="block text-sm font-medium text-gray-700 mb-3">
-                  21. Please rate the following areas of this insurer:
+                  20. Please rate the following areas of this insurer:
                 </label>
                 <div className="space-y-4">
                   {q21Ratings.map((item, index) => (
@@ -406,7 +406,7 @@ export default function InsurerEvaluationPage({ data, updateData, insurers: cust
               }) && (
                 <div>
                   <label className="block text-sm font-medium text-gray-700 mb-2">
-                    21m. For any area rated "Poor" or "Very Poor," please state the main reason for the low rating and suggest one specific improvement the insurer could implement.
+                    20m. For any area rated "Poor" or "Very Poor," please state the main reason for the low rating and suggest one specific improvement the insurer could implement.
                   </label>
                   <textarea
                     value={data.q21FollowUp || ''}
