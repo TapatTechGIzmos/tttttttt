@@ -194,7 +194,8 @@ export default function ZambiaLifeSurvey() {
   };
 
   const handleSubmit = async () => {
-    const result = await submitSurvey(surveyData, setIsSubmitting, 'zambia-life');
+    const surveyDataWithCountry = { ...surveyData, country: 'Zambia' };
+    const result = await submitSurvey(surveyDataWithCountry, setIsSubmitting, true);
 
     if (result.success) {
       localStorage.removeItem('zambiaLifeSurveyDraft');
