@@ -3,6 +3,7 @@ export interface SurveyData {
   company: string;
   email: string;
   province: string;
+  country?: string;
   yearsOfExperience: string;
   jobFunction: string;
   gender: string;
