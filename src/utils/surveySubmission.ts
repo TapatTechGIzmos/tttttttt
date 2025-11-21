@@ -30,6 +30,7 @@ const Q25_OPTIONS = ['Direct access to senior and empowered underwriters with lo
 
 const Q28_OPTIONS = ['Business planning session', 'Strategic planning workshops', 'Training events', 'Broker road shows', 'Regular meetings with broker consultant', 'Other (please specify)'];
 const Q29_OPTIONS = ['Product training', 'Enhanced customer service', 'Faster underwriting', 'Increased Insurance marketing', 'Market insights on end-customer segments', 'Selling skills training', 'Other (please specify)'];
+const Q29_OPTIONS_COUNT = Q29_OPTIONS.length;
 
 const Q15_KEYS = ['clientAcquisition', 'quotation', 'policyAdmin', 'claimsManagement', 'financialManagement', 'otherProcesses'];
 const Q19_CATEGORIES = ['underwriting', 'documentation', 'claims', 'postSale', 'relationship', 'proportion'];
@@ -171,7 +172,8 @@ export async function submitSurvey(
     isLifeSurvey: boolean = false
 ): Promise<SubmissionResult> {
 
-    const EXPECTED_LENGTH = 166;
+    const country = surveyData.country || "Botswana";
+    const EXPECTED_LENGTH = (country === "Zambia" && !isLifeSurvey) ? 174 : 166;
 
     if (!setIsSubmitting) {
         console.error("submitSurvey requires setIsSubmitting setter function.");
