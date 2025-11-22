@@ -6,17 +6,17 @@ export default function Hero() {
   return (
     <div className="bg-blue-900">
       <div className="max-w-7xl mx-auto">
-        <div className="relative w-full">
+        <div className="w-full">
           <img
             src="https://res.cloudinary.com/dnunw2a7q/image/upload/v1762634063/Insurance_Intelligence_Africa_PTT_2025_GIF_002_uwhs78.gif"
             alt="Diverse team of insurance brokers in professional consultation"
             className="w-full h-auto object-contain"
           />
-          <div className="absolute bottom-2 sm:bottom-3 md:bottom-4 lg:bottom-6 left-1/2 transform -translate-x-1/2 md:-translate-x-0 md:left-1/2 md:translate-x-[10%] px-2 sm:px-0 w-auto flex justify-center">
-            <Link to="/broker-survey" className="inline-block bg-red-600 text-white px-4 py-1.5 sm:px-8 sm:py-2.5 md:px-12 md:py-3 lg:px-16 lg:py-4 rounded-md hover:bg-red-700 transition-colors text-xs sm:text-sm md:text-base lg:text-lg font-semibold shadow-lg whitespace-nowrap">
-              Take Broker Survey
-            </Link>
-          </div>
+        </div>
+        <div className="bg-white py-6 sm:py-8 md:py-10 flex justify-center">
+          <Link to="/broker-survey" className="inline-block bg-red-600 text-white px-4 py-1.5 sm:px-8 sm:py-2.5 md:px-12 md:py-3 lg:px-16 lg:py-4 rounded-md hover:bg-red-700 transition-colors text-xs sm:text-sm md:text-base lg:text-lg font-semibold shadow-lg whitespace-nowrap">
+            Take Broker Survey
+          </Link>
         </div>
         <div className="px-4 sm:px-6 lg:px-8 py-8 sm:py-10 md:py-12 text-white">
           <div className="text-center">
