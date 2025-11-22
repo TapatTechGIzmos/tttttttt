@@ -35,7 +35,7 @@ const initialSurveyData: SurveyData = {
   topProductsPersonal: [],
   topProductsCommercial: [],
   leadSources: [],
-  leadSourcesOther: '',
+  leadSourceOther: '',
   digitalComfort: '',
   digitalTasks: [],
   digitalToolReasons: [],
