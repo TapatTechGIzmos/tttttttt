@@ -372,18 +372,38 @@ export default function BusinessOperationsPage({ data, updateData, surveyType = 
               Selected: {localLeadSources.length} of 3
             </span>
           </div>
-          <div className="flex flex-wrap gap-3">
-            {leadSources.map((source) => (
-              <label key={source} className="flex items-center space-x-2">
-                <input
-                  type="checkbox"
-                  checked={localLeadSources.includes(source)}
-                  onChange={() => handleLeadSourceChange(source)}
-                  className="w-4 h-4 text-blue-600 focus:ring-blue-500"
-                />
-                <span>{source}</span>
-              </label>
-            ))}
+          <div className="space-y-2">
+            {leadSources.map((source) => {
+              const isOther = source === 'Other (please specify)';
+              const isChecked = localLeadSources.includes(source);
+              const isDisabled = !isChecked && localLeadSources.length >= 3;
+
+              return (
+                <div key={source}>
+                  <label className="flex items-center space-x-2">
+                    <input
+                      type="checkbox"
+                      checked={isChecked}
+                      onChange={() => handleLeadSourceChange(source)}
+                      disabled={isDisabled}
+                      className="w-4 h-4 text-blue-600 focus:ring-blue-500 disabled:opacity-50 disabled:cursor-not-allowed"
+                    />
+                    <span className={isDisabled ? 'text-gray-400' : 'text-gray-700'}>{source}</span>
+                  </label>
+                  {isOther && isChecked && (
+                    <div className="mt-2 ml-6">
+                      <input
+                        type="text"
+                        value={data.leadSourceOther || ''}
+                        onChange={(e) => updateData({ leadSourceOther: e.target.value })}
+                        placeholder="Please specify other lead source"
+                        className="w-full px-3 py-2 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-blue-500"
+                      />
+                    </div>
+                  )}
+                </div>
+              );
+            })}
           </div>
         </div>
 

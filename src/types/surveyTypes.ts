@@ -20,7 +20,7 @@ export interface SurveyData {
   topProductsPersonal: string[];
   topProductsCommercial: string[];
   leadSources: string[];
-  leadSourcesOther: string;
+  leadSourceOther: string;
   digitalComfort: string;
   digitalTasks: string[];
   digitalToolReasons: string[];
