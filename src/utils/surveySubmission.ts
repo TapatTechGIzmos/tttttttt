@@ -57,7 +57,7 @@ export function mapSurveyDataForSubmission(data: SurveyData, isLifeSurvey: boole
     submissionArray.push(data.name || "");
     submissionArray.push(data.company || "");
     submissionArray.push(data.email || "");
-    submissionArray.push(data.district || "");
+    submissionArray.push(data.province || "");
 
     submissionArray.push(data.yearsOfExperience || "");
 
@@ -95,6 +95,7 @@ export function mapSurveyDataForSubmission(data: SurveyData, isLifeSurvey: boole
     submissionArray.push(...mapToBinary(data.topProductsCommercial, q12bOptions));
 
     submissionArray.push(...mapToBinary(data.leadSources, Q13_OPTIONS));
+    submissionArray.push(data.leadSourcesOther || "");
     submissionArray.push(...mapToBinary(data.digitalTasks, Q14_OPTIONS));
 
     Q15_KEYS.forEach(key => {
@@ -103,11 +104,20 @@ export function mapSurveyDataForSubmission(data: SurveyData, isLifeSurvey: boole
 
     submissionArray.push(...mapToBinary(data.digitalToolReasons, Q16_OPTIONS));
 
+    const placementFactorLabels: { [key: string]: string } = {
+        flexibility: "Flexibility",
+        businessGrowth: "Business Growth",
+        operationalEfficiency: "Operational Efficiency",
+        productQuality: "Product Quality",
+        bindersAndIncentives: "Binders and Incentives",
+        brandAndMarket: "Brand and Market"
+    };
+
     Q17_RANKS.forEach(rank => {
         const factorKey = Object.keys(data.placementFactors || {}).find(
             key => data.placementFactors?.[key] === rank
         );
-        submissionArray.push(factorKey || "");
+        submissionArray.push(factorKey ? placementFactorLabels[factorKey] || factorKey : "");
     });
 
     const primaryInsurers = data.primaryInsurers || [];
@@ -125,8 +135,18 @@ export function mapSurveyDataForSubmission(data: SurveyData, isLifeSurvey: boole
 
     submissionArray.push(data.deepDiveInsurer || "");
 
+    const ratingToValue: { [key: string]: string } = {
+        "Very Poor": "1",
+        "Poor": "2",
+        "Satisfactory": "3",
+        "Good": "4",
+        "Excellent": "5",
+        "N/A": "0"
+    };
+
     Q20_KEYS.forEach(key => {
-        submissionArray.push(data.detailedRatings?.[key as keyof typeof data.detailedRatings] || "");
+        const ratingText = data.detailedRatings?.[key as keyof typeof data.detailedRatings] || "";
+        submissionArray.push(ratingText);
     });
 
     submissionArray.push(data.q21FollowUp || "");
@@ -173,7 +193,7 @@ export async function submitSurvey(
 ): Promise<SubmissionResult> {
 
     const country = surveyData.country || "Botswana";
-    const EXPECTED_LENGTH = (country === "Zambia" && !isLifeSurvey) ? 174 : 166;
+    const EXPECTED_LENGTH = (country === "Zambia" && !isLifeSurvey) ? 175 : 167;
 
     if (!setIsSubmitting) {
         console.error("submitSurvey requires setIsSubmitting setter function.");
