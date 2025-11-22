@@ -95,7 +95,7 @@ export function mapSurveyDataForSubmission(data: SurveyData, isLifeSurvey: boole
     submissionArray.push(...mapToBinary(data.topProductsCommercial, q12bOptions));
 
     submissionArray.push(...mapToBinary(data.leadSources, Q13_OPTIONS));
-    submissionArray.push(data.leadSourcesOther || "");
+    submissionArray.push(data.leadSourceOther || "");
     submissionArray.push(...mapToBinary(data.digitalTasks, Q14_OPTIONS));
 
     Q15_KEYS.forEach(key => {
