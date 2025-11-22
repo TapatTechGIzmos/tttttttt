@@ -12,8 +12,8 @@ export default function Hero() {
             alt="Diverse team of insurance brokers in professional consultation"
             className="w-full h-auto object-contain"
           />
-          <div className="absolute bottom-8 sm:bottom-12 md:bottom-16 lg:bottom-20 left-1/2 transform -translate-x-1/2 md:-translate-x-0 md:left-1/2 md:translate-x-[10%] px-2 sm:px-0 w-auto flex justify-center">
-            <Link to="/broker-survey" className="inline-block bg-blue-600 text-white px-4 py-1.5 sm:px-8 sm:py-2.5 md:px-12 md:py-3 lg:px-16 lg:py-4 rounded-md hover:bg-blue-700 transition-colors text-xs sm:text-sm md:text-base lg:text-lg font-semibold shadow-lg whitespace-nowrap">
+          <div className="absolute bottom-2 sm:bottom-3 md:bottom-4 lg:bottom-6 left-1/2 transform -translate-x-1/2 md:-translate-x-0 md:left-1/2 md:translate-x-[10%] px-2 sm:px-0 w-auto flex justify-center">
+            <Link to="/broker-survey" className="inline-block bg-red-600 text-white px-4 py-1.5 sm:px-8 sm:py-2.5 md:px-12 md:py-3 lg:px-16 lg:py-4 rounded-md hover:bg-red-700 transition-colors text-xs sm:text-sm md:text-base lg:text-lg font-semibold shadow-lg whitespace-nowrap">
               Take Broker Survey
             </Link>
           </div>
