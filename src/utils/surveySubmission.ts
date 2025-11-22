@@ -2,7 +2,7 @@ import { SurveyData } from '../types/surveyTypes';
 
 const GOOGLE_APPS_SCRIPT_URL_Botswana = "https://script.google.com/macros/s/AKfycbzfSHW4zaRjlewYo8QBjPBu4rwW0NeyX_0m3fi_0sWhNPXIqM1HyR6IajSKCxy5Gedk/exec";
 const GOOGLE_APPS_SCRIPT_URL_LIFE_Botswana = "https://script.google.com/macros/s/AKfycby5TU8A96WeXk_6NnesMYG-fSUo0r-94zetBylmGN5ntRJ32ikPTkYhuiQVe6mC8h6iwQ/exec";
-const GOOGLE_APPS_SCRIPT_URL_ZAMBIA = "https://script.google.com/macros/s/AKfycbytU8h4Pp_r6Uv7om06Hfe-0brGTpqz7_fEPHfN3ba9SATSCYdRLefR15MERQCRsDWjdA/exec";
+const GOOGLE_APPS_SCRIPT_URL_ZAMBIA = "https://script.google.com/macros/s/AKfycbxxNN4xmKCpBAZx_W-_s721P6hSLs9VgNDrUJED3XlD0dVUcaKpTzPa4fUmgsEMy_aA6w/exec";
 const GOOGLE_APPS_SCRIPT_URL_ZAMBIA_LIFE = "https://script.google.com/macros/s/AKfycbzRiqdlXVHpwhtbGINXeyQffnN-ynR_1pdWCfRzhyKNL-Vl3ohSEFPqEjJ-H6ZAq1by1Q/exec";
 
 const Q6_OPTIONS_BOTSWANA = ['South East District', 'North East District', 'Southern District', 'Kweneng District', 'Kgatleng Distrct', 'Central District', 'Ghanzi District', 'Kgalagadi District', 'Ngamiland District', 'Chobe District'];
